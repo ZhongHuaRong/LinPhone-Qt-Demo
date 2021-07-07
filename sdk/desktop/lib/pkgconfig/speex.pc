@@ -1,0 +1,15 @@
+# libspeex pkg-config source file
+
+prefix=C:/msys64/home/qida/build/linphone-sdk/desktop
+exec_prefix=C:/msys64/home/qida/build/linphone-sdk/desktop/bin
+libdir=C:/msys64/home/qida/build/linphone-sdk/desktop/lib
+includedir=C:/msys64/home/qida/build/linphone-sdk/desktop/include
+
+Name: speex
+Description: Speex is an audio codec tuned for speech
+Version: 1.2rc1
+Requires:
+Conflicts:
+Libs: -LC:/msys64/home/qida/build/linphone-sdk/desktop/lib -lspeex
+Libs.private: -lm
+Cflags: -IC:/msys64/home/qida/build/linphone-sdk/desktop/include

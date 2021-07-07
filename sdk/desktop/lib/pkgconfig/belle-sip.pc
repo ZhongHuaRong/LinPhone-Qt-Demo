@@ -1,0 +1,13 @@
+# This is a comment
+prefix=C:/msys64/home/qida/build/linphone-sdk/desktop
+exec_prefix=C:/msys64/home/qida/build/linphone-sdk/desktop/bin
+includedir=C:/msys64/home/qida/build/linphone-sdk/desktop/include
+
+Name: belle-sip 
+Description: A c based implementation of the SIP (RFC 3261)  telephony protocol 
+Requires: bctoolbox
+Requires.private:  
+Version: 5.0.0
+Libs: -LC:/msys64/home/qida/build/linphone-sdk/desktop/lib -lbellesip
+Libs.private: 
+Cflags: -IC:/msys64/home/qida/build/linphone-sdk/desktop/include 

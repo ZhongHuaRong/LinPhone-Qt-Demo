@@ -1,0 +1,57 @@
+# See: https://wiki.qt.io/Qml_Styling
+
+module Common.Styles
+
+# Components styles ------------------------------------------------------------
+
+singleton BusyIndicatorStyle        1.0 Animations/BusyIndicatorStyle.qml
+
+singleton DialogStyle               1.0 Dialog/DialogStyle.qml
+
+singleton ActionBarStyle            1.0 Form/ActionBarStyle.qml
+singleton CheckBoxTextStyle         1.0 Form/CheckBoxTextStyle.qml
+singleton ComboBoxStyle             1.0 Form/ComboBoxStyle.qml
+singleton DroppableTextAreaStyle    1.0 Form/DroppableTextAreaStyle.qml
+singleton ListFormStyle             1.0 Form/ListFormStyle.qml
+singleton SearchBoxStyle            1.0 Form/SearchBoxStyle.qml
+singleton SliderStyle               1.0 Form/SliderStyle.qml
+singleton SwitchStyle               1.0 Form/SwitchStyle.qml
+singleton CommonItemDelegateStyle   1.0 Form/CommonItemDelegateStyle.qml
+singleton TransparentTextInputStyle 1.0 Form/TransparentTextInputStyle.qml
+
+singleton AbstractTextButtonStyle   1.0 Form/Buttons/AbstractTextButtonStyle.qml
+singleton ExclusiveButtonsStyle     1.0 Form/Buttons/ExclusiveButtonsStyle.qml
+singleton FileChooserButtonStyle    1.0 Form/Buttons/FileChooserButtonStyle.qml
+singleton SmallButtonStyle          1.0 Form/Buttons/SmallButtonStyle.qml
+singleton TextButtonAStyle          1.0 Form/Buttons/TextButtonAStyle.qml
+singleton TextButtonBStyle          1.0 Form/Buttons/TextButtonBStyle.qml
+
+singleton NumericFieldStyle         1.0 Form/Fields/NumericFieldStyle.qml
+singleton TextAreaFieldStyle        1.0 Form/Fields/TextAreaFieldStyle.qml
+singleton TextFieldStyle            1.0 Form/Fields/TextFieldStyle.qml
+
+singleton FormHGroupStyle           1.0 Form/Placements/FormHGroupStyle.qml
+singleton FormLineStyle             1.0 Form/Placements/FormLineStyle.qml
+singleton FormStyle                 1.0 Form/Placements/FormStyle.qml
+singleton FormTableLineStyle        1.0 Form/Placements/FormTableLineStyle.qml
+singleton FormTableStyle            1.0 Form/Placements/FormTableStyle.qml
+singleton FormVGroupStyle           1.0 Form/Placements/FormVGroupStyle.qml
+
+singleton TabButtonStyle            1.0 Form/Tab/TabButtonStyle.qml
+singleton TabContainerStyle         1.0 Form/Tab/TabContainerStyle.qml
+
+singleton VuMeterStyle              1.0 Indicators/VuMeterStyle.qml
+
+singleton ApplicationMenuStyle      1.0 Menus/ApplicationMenuStyle.qml
+singleton DropDownStaticMenuStyle   1.0 Menus/DropDownStaticMenuStyle.qml
+singleton MenuItemStyle             1.0 Menus/MenuItemStyle.qml
+singleton MenuStyle                 1.0 Menus/MenuStyle.qml
+
+singleton ForceScrollBarStyle       1.0 Misc/ForceScrollBarStyle.qml
+singleton PanedStyle                1.0 Misc/PanedStyle.qml
+
+singleton PopupStyle                1.0 Popup/PopupStyle.qml
+
+singleton TooltipStyle              1.0 Tooltip/TooltipStyle.qml
+
+singleton WindowStyle               1.0 Window/WindowStyle.qml

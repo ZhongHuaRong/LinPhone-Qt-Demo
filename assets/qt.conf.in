@@ -1,0 +1,3 @@
+[Platforms]
+WindowsArguments = dpiawareness=@APP_QT_CONF_DPI@
+@APP_QT_CONF_PATH@

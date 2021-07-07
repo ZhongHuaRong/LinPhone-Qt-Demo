@@ -1,0 +1,44 @@
+# See: https://wiki.qt.io/Qml_Styling
+
+module Linphone.Styles
+
+# Components styles ------------------------------------------------------------
+
+singleton AccountStatusStyle                   1.0 Account/AccountStatusStyle.qml
+
+singleton CardBlockStyle                       1.0 Blocks/CardBlockStyle.qml
+singleton RequestBlockStyle                    1.0 Blocks/RequestBlockStyle.qml
+
+singleton ChatStyle                            1.0 Chat/ChatStyle.qml
+
+singleton CallControlsStyle                    1.0 Calls/CallControlsStyle.qml
+singleton CallsStyle                           1.0 Calls/CallsStyle.qml
+singleton CallStatisticsStyle                  1.0 Calls/CallStatisticsStyle.qml
+singleton ConferenceControlsStyle              1.0 Calls/ConferenceControlsStyle.qml
+
+singleton CodecsViewerStyle                    1.0 Codecs/CodecsViewerStyle.qml
+
+singleton AvatarStyle                          1.0 Contact/AvatarStyle.qml
+singleton ContactDescriptionStyle              1.0 Contact/ContactDescriptionStyle.qml
+singleton ContactMessageCounterStyle           1.0 Contact/ContactMessageCounterStyle.qml
+singleton ContactStyle                         1.0 Contact/ContactStyle.qml
+
+singleton OnlineInstallerDialogStyle           1.0 Dialog/OnlineInstallerDialogStyle.qml
+
+singleton HistoryStyle                         1.0 History/HistoryStyle.qml
+
+singleton SipAddressesMenuStyle                1.0 Menus/SipAddressesMenuStyle.qml
+
+singleton MessageCounterStyle                  1.0 Misc/MessageCounterStyle.qml
+
+singleton NotificationBasicStyle               1.0 Notifications/NotificationBasicStyle.qml
+singleton NotificationReceivedCallStyle        1.0 Notifications/NotificationReceivedCallStyle.qml
+singleton NotificationReceivedFileMessageStyle 1.0 Notifications/NotificationReceivedFileMessageStyle.qml
+singleton NotificationReceivedMessageStyle     1.0 Notifications/NotificationReceivedMessageStyle.qml
+singleton NotificationStyle                    1.0 Notifications/NotificationStyle.qml
+
+singleton TelKeypadStyle                       1.0 TelKeypad/TelKeypadStyle.qml
+
+singleton TimelineStyle                        1.0 Timeline/TimelineStyle.qml
+
+singleton SipAddressesViewStyle                1.0 View/SipAddressesViewStyle.qml

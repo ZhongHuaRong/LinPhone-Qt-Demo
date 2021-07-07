@@ -1,0 +1,47 @@
+# See: https://wiki.qt.io/Qml_Styling
+
+module App.Styles
+
+# Views styles =================================================================
+
+# Calls Window -----------------------------------------------------------------
+
+singleton CallStyle                                      1.0 Calls/CallStyle.qml
+singleton CallsWindowStyle                               1.0 Calls/CallsWindowStyle.qml
+singleton ConferenceStyle                                1.0 Calls/ConferenceStyle.qml
+
+singleton CallSipAddressStyle                            1.0 Calls/Dialogs/CallSipAddressStyle.qml
+singleton CallTransferStyle                              1.0 Calls/Dialogs/CallTransferStyle.qml
+singleton ConferenceManagerStyle                         1.0 Calls/Dialogs/ConferenceManagerStyle.qml
+singleton MultimediaParametersStyle                      1.0 Calls/Dialogs/MultimediaParametersStyle.qml
+
+# Main Window ------------------------------------------------------------------
+
+singleton ActivateAppSipAccountWithEmailStyle            1.0 Main/Assistant/ActivateAppSipAccountWithEmailStyle.qml
+singleton ActivateAppSipAccountWithPhoneNumberStyle      1.0 Main/Assistant/ActivateAppSipAccountWithPhoneNumberStyle.qml
+singleton AssistantAbstractViewStyle                     1.0 Main/Assistant/AssistantAbstractViewStyle.qml
+singleton AssistantHomeStyle                             1.0 Main/Assistant/AssistantHomeStyle.qml
+singleton CreateAppSipAccountStyle                       1.0 Main/Assistant/CreateAppSipAccountStyle.qml
+singleton UseAppSipAccountStyle                          1.0 Main/Assistant/UseAppSipAccountStyle.qml
+
+singleton AssistantStyle                                 1.0 Main/AssistantStyle.qml
+singleton ContactEditStyle                               1.0 Main/ContactEditStyle.qml
+singleton ContactsStyle                                  1.0 Main/ContactsStyle.qml
+singleton ConversationStyle                              1.0 Main/ConversationStyle.qml
+singleton HomeStyle                                      1.0 Main/HomeStyle.qml
+singleton HistoryViewStyle                               1.0 Main/HistoryViewStyle.qml
+singleton InviteFriendsStyle                             1.0 Main/InviteFriendsStyle.qml
+singleton MainWindowStyle                                1.0 Main/MainWindowStyle.qml
+
+singleton AboutStyle                                     1.0 Main/Dialogs/AboutStyle.qml
+singleton AuthenticationRequestStyle                     1.0 Main/Dialogs/AuthenticationRequestStyle.qml
+singleton ManageAccountsStyle                            1.0 Main/Dialogs/ManageAccountsStyle.qml
+
+# Settings Window --------------------------------------------------------------
+
+singleton SettingsAdvancedStyle                          1.0 Settings/SettingsAdvancedStyle.qml
+singleton SettingsAudioStyle                             1.0 Settings/SettingsAudioStyle.qml
+singleton SettingsWindowStyle                            1.0 Settings/SettingsWindowStyle.qml
+
+singleton SettingsSipAccountsEditStyle                   1.0 Settings/Dialogs/SettingsSipAccountsEditStyle.qml
+singleton SettingsVideoPreviewStyle                      1.0 Settings/Dialogs/SettingsVideoPreviewStyle.qml

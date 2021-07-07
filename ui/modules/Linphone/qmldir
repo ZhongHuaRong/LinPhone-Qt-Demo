@@ -1,0 +1,39 @@
+# ==============================================================================
+# Linphone's components to export.
+# ==============================================================================
+
+module Linphone
+
+# Components -------------------------------------------------------------------
+
+AccountStatus       1.0 Account/AccountStatus.qml
+
+CardBlock           1.0 Blocks/CardBlock.qml
+RequestBlock        1.0 Blocks/RequestBlock.qml
+
+Calls               1.0 Calls/Calls.qml
+CallStatistics      1.0 Calls/CallStatistics.qml
+
+Chat                1.0 Chat/Chat.qml
+
+History             1.0 History/History.qml
+
+CodecsViewer        1.0 Codecs/CodecsViewer.qml
+
+Avatar              1.0 Contact/Avatar.qml
+Contact             1.0 Contact/Contact.qml
+ContactDescription  1.0 Contact/ContactDescription.qml
+
+SipAddressesMenu    1.0 Menus/SipAddressesMenu.qml
+
+MessageCounter      1.0 Misc/MessageCounter.qml
+
+PresenceLevel       1.0 Presence/PresenceLevel.qml
+
+SmartSearchBar      1.0 SmartSearchBar/SmartSearchBar.qml
+
+TelKeypad           1.0 TelKeypad/TelKeypad.qml
+
+Timeline            1.0 Timeline/Timeline.qml
+
+SipAddressesView    1.0 View/SipAddressesView.qml
