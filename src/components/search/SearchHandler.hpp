@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -26,11 +26,11 @@
 
 #include <list>
 // =============================================================================
-class SearchHandler : public QObject, public linphone::MagicSearchListener{
+class SearchHandler : public QObject/*, public linphone::MagicSearchListener*/{
 Q_OBJECT
 public:
 	SearchHandler(QObject * parent = nullptr);
-	virtual void onSearchResultsReceived(const std::shared_ptr<linphone::MagicSearch> & magicSearch);
+	/*virtual*/ void onSearchResultsReceived(const std::shared_ptr<linphone::MagicSearch> & magicSearch);
 signals:
 	void searchReceived(std::list<std::shared_ptr<linphone::SearchResult>> );
 };

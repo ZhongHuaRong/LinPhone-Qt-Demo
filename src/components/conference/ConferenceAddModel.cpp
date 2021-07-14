@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -137,7 +137,7 @@ void ConferenceHelperModel::ConferenceAddModel::update () {
   shared_ptr<linphone::Conference> conference = mConferenceHelperModel->mCore->getConference();
   if(!conference){
     auto parameters = mConferenceHelperModel->mCore->createConferenceParams();
-    parameters->setVideoEnabled(false);// Video is not yet fully supported by the application in conference
+    parameters->enableVideo(false);// Video is not yet fully supported by the application in conference
     conference = mConferenceHelperModel->mCore->createConferenceWithParams(parameters);
   }
   auto currentCalls = CoreManager::getInstance()->getCore()->getCalls();

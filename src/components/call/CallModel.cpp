@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -83,14 +83,14 @@ CallModel::CallModel (shared_ptr<linphone::Call> call){
   mMagicSearch = CoreManager::getInstance()->getCore()->createMagicSearch();
   mSearch = std::make_shared<SearchHandler>(this);
   QObject::connect(mSearch.get(), SIGNAL(searchReceived(std::list<std::shared_ptr<linphone::SearchResult>> )), this, SLOT(searchReceived(std::list<std::shared_ptr<linphone::SearchResult>>)));
-  mMagicSearch->addListener(mSearch);
+//  mMagicSearch->addListener(mSearch);
   
   mRemoteAddress = mCall->getRemoteAddress()->clone();
-  mMagicSearch->getContactListFromFilterAsync(mRemoteAddress->getUsername(),mRemoteAddress->getDomain());
+//  mMagicSearch->getContactListFromFilterAsync(mRemoteAddress->getUsername(),mRemoteAddress->getDomain());
 }
 
 CallModel::~CallModel () {
-	mMagicSearch->removeListener(mSearch);
+//	mMagicSearch->removeListener(mSearch);
 	mCall->unsetData("call-model");
 }
 

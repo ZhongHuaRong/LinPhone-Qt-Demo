@@ -1,0 +1,10 @@
+# This is a comment
+prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop
+exec_prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/bin
+includedir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/include
+
+Name: oRTP 
+Description: Implement the RFC3550 (RTP) with a easy to use API with high and low level access.
+Version: 4.5.0
+Libs: -LC:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/lib -lortp 
+Cflags: -IC:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/include 

@@ -1,0 +1,10 @@
+prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop
+exec_prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop
+libdir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/lib
+includedir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/include
+
+Name: libjpeg
+Description: A SIMD-accelerated JPEG codec that provides the libjpeg API
+Version: 2.0.5
+Libs: -L${libdir} -ljpeg
+Cflags: -I${includedir}

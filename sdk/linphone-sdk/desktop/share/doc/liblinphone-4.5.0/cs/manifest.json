@@ -1,0 +1,3080 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/WORK/desktop/Build/linphone/wrappers/csharp/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AVPFMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AVPFMode.html",
+          "hash": "/orFKq2vU5eNoDNVXQhh8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreator.html",
+          "hash": "n+bX15MelxYywav3qJ7BBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorActivationCodeStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorActivationCodeStatus.html",
+          "hash": "cNC7qE0pwDcyfTbzUJ198w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorAlgoStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorAlgoStatus.html",
+          "hash": "wSDrAd0+qLtuw4EIQTqo8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorDomainStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorDomainStatus.html",
+          "hash": "1EZaf3vZv52IqmwuCs3xGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorEmailStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorEmailStatus.html",
+          "hash": "iAiIHKCx5k8AezzkPEMKWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorLanguageStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorLanguageStatus.html",
+          "hash": "rjh0miJl5vGUwMjblAFqnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnActivateAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnActivateAccountDelegate.html",
+          "hash": "Me2Npjwmpr6hBIiJoUv8kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnActivateAliasDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnActivateAliasDelegate.html",
+          "hash": "9ll7aY2LnaE3+QWuw4blsg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnCreateAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnCreateAccountDelegate.html",
+          "hash": "krPrdQySjCu0wMAZDG4n7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountActivatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountActivatedDelegate.html",
+          "hash": "US4Z978uaqOlZn9IYeIylg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountExistDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountExistDelegate.html",
+          "hash": "lupWgRQK52H6IMVtWHA4rQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountLinkedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnIsAccountLinkedDelegate.html",
+          "hash": "VosLnNIhM47kOehSdoj6bQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnIsAliasUsedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnIsAliasUsedDelegate.html",
+          "hash": "86IArR3sDIV7cGxkasSL4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnLinkAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnLinkAccountDelegate.html",
+          "hash": "XPIwJ+SbwpwScrwiUjORTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnLoginLinphoneAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnLoginLinphoneAccountDelegate.html",
+          "hash": "a5wdm8p1UDKGMqQmrUa3Hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnRecoverAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnRecoverAccountDelegate.html",
+          "hash": "yZ3bats5HcFcTbXvkHImDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.OnUpdateAccountDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.OnUpdateAccountDelegate.html",
+          "hash": "+p+worvIOdawd5Z9fAcfDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorListener.html",
+          "hash": "A1eZGMrHrzuqefdJ8K0l4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorPasswordStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorPasswordStatus.html",
+          "hash": "fk3A0dTqkklrfo7UIpgi5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorPhoneNumberStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorPhoneNumberStatus.html",
+          "hash": "bO/SXpJhqjYP+fArkIlXIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorStatus.html",
+          "hash": "2TFGPckqxFEoF4yyoey9aA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorTransportStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorTransportStatus.html",
+          "hash": "YoTds+4wr5TEVNe2Yq2x4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AccountCreatorUsernameStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AccountCreatorUsernameStatus.html",
+          "hash": "9/uPD5Osr2ODh2p3X3VaGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Address.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Address.html",
+          "hash": "on+9nDpU4JH6sQVZ1ldndQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AddressFamily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AddressFamily.html",
+          "hash": "Lf5BuFLii56fI+zDjy482Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AudioDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AudioDevice.html",
+          "hash": "5MpGJL0KT27crKvW6L/dNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AudioDeviceCapabilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AudioDeviceCapabilities.html",
+          "hash": "oCa7/3tx+6hSgaqg8IYIQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AudioDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AudioDeviceType.html",
+          "hash": "wTJURO2hJ17eht0USZgwjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AuthInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AuthInfo.html",
+          "hash": "X8ew8X/FqzGCzrJrD8oD2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.AuthMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.AuthMethod.html",
+          "hash": "bnnsgjqvR3kCHHdsimq2iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Buffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Buffer.html",
+          "hash": "0CTecdbPkOWZwonZRXzY+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Call.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Call.html",
+          "hash": "w5VsHbdE4gK89qx29RBe1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallDir.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallDir.html",
+          "hash": "wpWNWINFUJcdGKPKU5m8kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnAckProcessingDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnAckProcessingDelegate.html",
+          "hash": "bf918l/+PMKKlfXZvr7L4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnAudioDeviceChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnAudioDeviceChangedDelegate.html",
+          "hash": "71irRIy7e4YyiulNzeXo1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnCameraNotWorkingDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnCameraNotWorkingDelegate.html",
+          "hash": "Lvq8dBRyzFfbaj3VfbwSwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnDtmfReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnDtmfReceivedDelegate.html",
+          "hash": "v2zlnt0Kw6JLOIKVOu5OEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnEncryptionChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnEncryptionChangedDelegate.html",
+          "hash": "H2G4ymKRnF6XiwL0+jSHaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnInfoMessageReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnInfoMessageReceivedDelegate.html",
+          "hash": "wXc+Vx0DYaTMoFySI+Y8kQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnNextVideoFrameDecodedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnNextVideoFrameDecodedDelegate.html",
+          "hash": "VfUhV+sb/VPTo5VzT4dNag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnSnapshotTakenDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnSnapshotTakenDelegate.html",
+          "hash": "HMzCRKXPw/CqJiwdyGxWIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnStateChangedDelegate.html",
+          "hash": "9tJqqiRf0ZhXp8/wZq7WCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnStatsUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnStatsUpdatedDelegate.html",
+          "hash": "a85jFGwT5UpUxp+NCLnrKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnTmmbrReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnTmmbrReceivedDelegate.html",
+          "hash": "IcWu+O5hWy/o1fyO/ZbT1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.OnTransferStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.OnTransferStateChangedDelegate.html",
+          "hash": "JEynVfwlkHC0nTe9Ves/SA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallListener.html",
+          "hash": "s3IbFxsdV3VXNQR2nroi7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallLog.html",
+          "hash": "7ahzNIlwwNTt37uADaFt7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallParams.html",
+          "hash": "559HDLAq/dYGV6UGHZEOyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallState.html",
+          "hash": "9h8sRpMr7xhMyyHosIZzag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallStats.html",
+          "hash": "oEl4zz3HxFUtSy0A+/gyFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CallStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CallStatus.html",
+          "hash": "gDpKCew/dc7inr1VPmohxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessage.html",
+          "hash": "TBp/3AknN9oBt8UXAGNETg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageDirection.html",
+          "hash": "auqD1EQlNuNoMZKOI7nMIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnEphemeralMessageDeletedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnEphemeralMessageDeletedDelegate.html",
+          "hash": "hN1/GrE3ndsmfCmFKeuB1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnEphemeralMessageTimerStartedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnEphemeralMessageTimerStartedDelegate.html",
+          "hash": "pinDrgjcvGtd3mTiq6gEwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnFileTransferProgressIndicationDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnFileTransferProgressIndicationDelegate.html",
+          "hash": "n968U1+MqbBXKWuAQlL2HA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnFileTransferRecvDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnFileTransferRecvDelegate.html",
+          "hash": "KvZEJqVkqaMuDtY27Ysvhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnFileTransferSendChunkDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnFileTransferSendChunkDelegate.html",
+          "hash": "jqNivzBGNjFBhGGPYtG8Tw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnFileTransferSendDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnFileTransferSendDelegate.html",
+          "hash": "o/lHhFpF2PmypWj90BkEWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnMsgStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnMsgStateChangedDelegate.html",
+          "hash": "ztkCNLlpYHMqrlmPAj12CA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.OnParticipantImdnStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.OnParticipantImdnStateChangedDelegate.html",
+          "hash": "xmOMpml56V48fDx4YPbP9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageListener.html",
+          "hash": "k3yS7BoTq+5c77fwaylUUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatMessageState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatMessageState.html",
+          "hash": "VBYDyyF3hloKLpmXJMVNBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoom.html",
+          "hash": "Pw4h7eDPBJSVBjBy1yADmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomBackend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomBackend.html",
+          "hash": "JUF/UiiSHY1xYZlN/EDsQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomCapabilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomCapabilities.html",
+          "hash": "S7OgjDGD7JqY3X2PjAKp/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomEncryptionBackend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomEncryptionBackend.html",
+          "hash": "reSCpRL3RLTfavPYbvPyuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnChatMessageParticipantImdnStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnChatMessageParticipantImdnStateChangedDelegate.html",
+          "hash": "Xpb7kXz2cIZGymkoIBQSuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnChatMessageReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnChatMessageReceivedDelegate.html",
+          "hash": "Trf0vFaU5uu7S0AXUDMu+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnChatMessageSendingDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnChatMessageSendingDelegate.html",
+          "hash": "i92vk+3w0jFUg0dI95/iMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnChatMessageSentDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnChatMessageSentDelegate.html",
+          "hash": "+1oNbaef/4o5Xi91uBg8bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnChatMessageShouldBeStoredDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnChatMessageShouldBeStoredDelegate.html",
+          "hash": "2d04di5UTNHeuxx4nWSZaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnConferenceAddressGenerationDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnConferenceAddressGenerationDelegate.html",
+          "hash": "MC5XLvStcRmVBTlpgtiALA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnConferenceJoinedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnConferenceJoinedDelegate.html",
+          "hash": "CYuyyQ1Eshl4Rk1Qepye6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnConferenceLeftDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnConferenceLeftDelegate.html",
+          "hash": "r1xKtHCDsO74eTORsx6m1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnEphemeralEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnEphemeralEventDelegate.html",
+          "hash": "EgE1d3E334iNAc8jObybKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnEphemeralMessageDeletedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnEphemeralMessageDeletedDelegate.html",
+          "hash": "CTYeA7C1F+e6AE0KIv+n/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnEphemeralMessageTimerStartedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnEphemeralMessageTimerStartedDelegate.html",
+          "hash": "NAcjEsCVg8h8S+lCTlDEpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnIsComposingReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnIsComposingReceivedDelegate.html",
+          "hash": "CjikSatKqt3DsHhMQOTNTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnMessageReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnMessageReceivedDelegate.html",
+          "hash": "ApTUmd+kd9Rzs+5zDXiWAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnNewEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnNewEventDelegate.html",
+          "hash": "/vTrsY/WKwICQluNTajHOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantAddedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantAddedDelegate.html",
+          "hash": "tKmN9dR20EOqE6XqA+0e2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantAdminStatusChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantAdminStatusChangedDelegate.html",
+          "hash": "aswn/dtcGQERd8edRhtfuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantDeviceAddedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantDeviceAddedDelegate.html",
+          "hash": "j0x2CdyWAmaDheEeVBIDWg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantDeviceRemovedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantDeviceRemovedDelegate.html",
+          "hash": "OVfjYnsiGRAvicVGnhCGUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantRegistrationSubscriptionRequestedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantRegistrationSubscriptionRequestedDelegate.html",
+          "hash": "7F/zQw8s6W96pJrgPHk8DQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantRegistrationUnsubscriptionRequestedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantRegistrationUnsubscriptionRequestedDelegate.html",
+          "hash": "8o6UE6Cj015PDAayrfNyEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnParticipantRemovedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnParticipantRemovedDelegate.html",
+          "hash": "NrUAMdb4AqW6wu2tTIwaMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnSecurityEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnSecurityEventDelegate.html",
+          "hash": "DUSlnAseKG4SGfGApd4RAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnStateChangedDelegate.html",
+          "hash": "+rEJZCyVPZ0x0TF7o9rgkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnSubjectChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnSubjectChangedDelegate.html",
+          "hash": "kj2VAHyUxhyB0bnLKTNP/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.OnUndecryptableMessageReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.OnUndecryptableMessageReceivedDelegate.html",
+          "hash": "E62b8IgQdxK2v+pu3uBa8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomListener.html",
+          "hash": "VKfLvZmjpwtAp4JB3/3cPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomParams.html",
+          "hash": "v6VnoepubI0idWqRjx48hg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomSecurityLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomSecurityLevel.html",
+          "hash": "dHk9w1ZqBC+tbPP8XfeuPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ChatRoomState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ChatRoomState.html",
+          "hash": "NE64GtshibkB5/P9iatBSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Conference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Conference.html",
+          "hash": "rj2Wusro6Tsz9N08WkA5tQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnParticipantAddedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnParticipantAddedDelegate.html",
+          "hash": "is9/gN/SfPgS5oZZBCZpcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnParticipantAdminStatusChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnParticipantAdminStatusChangedDelegate.html",
+          "hash": "3tfnqD8a/W9bnYfIDTmtIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnParticipantDeviceAddedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnParticipantDeviceAddedDelegate.html",
+          "hash": "g/sQ9np0XrAmN4hiiCKuzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnParticipantDeviceRemovedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnParticipantDeviceRemovedDelegate.html",
+          "hash": "Nm2d97tLHhE2erud5wCBaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnParticipantRemovedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnParticipantRemovedDelegate.html",
+          "hash": "P0bIpOfsh7K1JLqY9KsBXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnStateChangedDelegate.html",
+          "hash": "GzzSz1Pb+G9N4l2Z/qsV5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.OnSubjectChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.OnSubjectChangedDelegate.html",
+          "hash": "X933mjBxRAgAmf9c1OZ8Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceListener.html",
+          "hash": "IYgMY+L6+1BxJu1B77a6Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceParams.html",
+          "hash": "KFSYU3zg3NjwCUADwkwlbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConferenceState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConferenceState.html",
+          "hash": "B29CPJL5mVbz0K4zRvoD9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Config.html",
+          "hash": "jw83/a7ElWF/t+8d3oHSUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConfiguringState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConfiguringState.html",
+          "hash": "rs11zkiMPfwGoBtzZq+Llw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ConsolidatedPresence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ConsolidatedPresence.html",
+          "hash": "AWN/1HcArVnh5Q68w84DTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Content.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Content.html",
+          "hash": "a6d89FVutTVZFwOogZBCeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Core.html",
+          "hash": "x+GeP04Ecxjmlm2MaKWA8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnAudioDeviceChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnAudioDeviceChangedDelegate.html",
+          "hash": "bT50emoP8Jba+jg2eOhurw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnAudioDevicesListUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnAudioDevicesListUpdatedDelegate.html",
+          "hash": "IpanLSXHcnYJjAtBxAPW4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnAuthenticationRequestedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnAuthenticationRequestedDelegate.html",
+          "hash": "QTpqxiNq86ESkUHwBW6OgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnBuddyInfoUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnBuddyInfoUpdatedDelegate.html",
+          "hash": "VUz/Tng2oxRXXnWy9p+ZDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallCreatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallCreatedDelegate.html",
+          "hash": "aO4iejBH51VvyzF3bwrhtA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallEncryptionChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallEncryptionChangedDelegate.html",
+          "hash": "cAphfXfSWlPloJfymZqglQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallIdUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallIdUpdatedDelegate.html",
+          "hash": "qqsDlHeUYzzU2DbvFJl0Cw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallLogUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallLogUpdatedDelegate.html",
+          "hash": "WHY+dDsUQCs1DxUhKkVAWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallStateChangedDelegate.html",
+          "hash": "jobCBUVl+spHrGzrqfH2iQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnCallStatsUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnCallStatsUpdatedDelegate.html",
+          "hash": "4xcUjM+w6tAT0CV6hJxrmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnChatRoomEphemeralMessageDeletedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnChatRoomEphemeralMessageDeletedDelegate.html",
+          "hash": "TrNLojQqkisF3vMe06cFog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnChatRoomReadDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnChatRoomReadDelegate.html",
+          "hash": "uU4SCbMAMvcms9wS6e7W0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnChatRoomStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnChatRoomStateChangedDelegate.html",
+          "hash": "+h0xt3SkJFImQLJwzkDZhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnChatRoomSubjectChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnChatRoomSubjectChangedDelegate.html",
+          "hash": "8BEecBi6UfURid5XDpDJIw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnConferenceStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnConferenceStateChangedDelegate.html",
+          "hash": "C4AVPGSUeV0wgiSoMDb+UA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnConfiguringStatusDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnConfiguringStatusDelegate.html",
+          "hash": "F7aC9u79w3HY79MSXaZn3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnDtmfReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnDtmfReceivedDelegate.html",
+          "hash": "glZiyHd7w33aAJG5hxCW/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnEcCalibrationAudioInitDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnEcCalibrationAudioInitDelegate.html",
+          "hash": "+WaqVEOwAH9yZDwJzgPUsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnEcCalibrationAudioUninitDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnEcCalibrationAudioUninitDelegate.html",
+          "hash": "hCFSP9OhQYRM+VkXH5G5HQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnEcCalibrationResultDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnEcCalibrationResultDelegate.html",
+          "hash": "ScCuOevc1fKcEWIS+xhN+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnFirstCallStartedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnFirstCallStartedDelegate.html",
+          "hash": "lN4vDr6Yf89IW4zOTNcpUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnFriendListCreatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnFriendListCreatedDelegate.html",
+          "hash": "NaRGWaFCSG59doLmuks2Wg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnFriendListRemovedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnFriendListRemovedDelegate.html",
+          "hash": "u1MExaSpn5aZvjKSPrMgMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnGlobalStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnGlobalStateChangedDelegate.html",
+          "hash": "eeriEkeZecZR71MBXW4qxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnImeeUserRegistrationDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnImeeUserRegistrationDelegate.html",
+          "hash": "JzACAHiToUPPV4dwI15DbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnInfoReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnInfoReceivedDelegate.html",
+          "hash": "8eU93d9eW89NSOOC6dA6wg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnIsComposingReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnIsComposingReceivedDelegate.html",
+          "hash": "kRYbnPmQOjRVzw8hXnbJKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnLastCallEndedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnLastCallEndedDelegate.html",
+          "hash": "2vluhq3YHY+ATtsWPni/JA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnLogCollectionUploadProgressIndicationDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnLogCollectionUploadProgressIndicationDelegate.html",
+          "hash": "QcsgpVHPjwvKx+jQCVBpyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnLogCollectionUploadStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnLogCollectionUploadStateChangedDelegate.html",
+          "hash": "GE5Dur2gq/oWcDzkeKhHAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnMessageReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnMessageReceivedDelegate.html",
+          "hash": "Rj+KZxRH0Voc5Mm1mxYP+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnMessageReceivedUnableDecryptDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnMessageReceivedUnableDecryptDelegate.html",
+          "hash": "OOlLh/uSFlRpBXM7GUDOeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnMessageSentDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnMessageSentDelegate.html",
+          "hash": "QS8pjks49pTvQv74cKwQ/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnNetworkReachableDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnNetworkReachableDelegate.html",
+          "hash": "ZkBaw94nIMyJp+7kUquAGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnNewSubscriptionRequestedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnNewSubscriptionRequestedDelegate.html",
+          "hash": "Ndx5XvJyHGH2NSR+VuV9NA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnNotifyPresenceReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnNotifyPresenceReceivedDelegate.html",
+          "hash": "717hjfOq3BZT0LtEmFS2WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnNotifyPresenceReceivedForUriOrTelDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnNotifyPresenceReceivedForUriOrTelDelegate.html",
+          "hash": "YKTnVuMnQwNe0nAPvFzSOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnNotifyReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnNotifyReceivedDelegate.html",
+          "hash": "o7lI9YCwg4vtZQxb/dSHoA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnPublishStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnPublishStateChangedDelegate.html",
+          "hash": "pXScOgBD9eY/P8XUkzG8wA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnQrcodeFoundDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnQrcodeFoundDelegate.html",
+          "hash": "w2Fu+Wh2oUR0+0t5pri+7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnReferReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnReferReceivedDelegate.html",
+          "hash": "2mxBHIEL5YzyVJjhq/jiiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnRegistrationStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnRegistrationStateChangedDelegate.html",
+          "hash": "3au5tuoNr/V+EikX1Z6qqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnSubscribeReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnSubscribeReceivedDelegate.html",
+          "hash": "CnwaEsBcqlNP2UrdwIT2rQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnSubscriptionStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnSubscriptionStateChangedDelegate.html",
+          "hash": "skQtNdQE0GcIAB0EZmb4+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnTransferStateChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnTransferStateChangedDelegate.html",
+          "hash": "gP+Rb8CY1vBAkwBDeCeaBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.OnVersionUpdateCheckResultReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.OnVersionUpdateCheckResultReceivedDelegate.html",
+          "hash": "Uduxzoc3NopBwjaico5qAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreListener.html",
+          "hash": "st/UivX+3nQg1ERAjwvQ1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.CoreLogCollectionUploadState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.CoreLogCollectionUploadState.html",
+          "hash": "M5PHMTe6+Bg07z1oWAK73g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.DialPlan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.DialPlan.html",
+          "hash": "Nq54YlzT51GMKk8X+OgDVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.EcCalibratorStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.EcCalibratorStatus.html",
+          "hash": "4lxW2RP5uBVCWdZTpO674Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ErrorInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ErrorInfo.html",
+          "hash": "ADyoDDA/ihp0v1LrAJ4Jig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Event.html",
+          "hash": "NNWOpe0/C+jm0OhaGLUrnw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.EventListener.OnNotifyResponseDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.EventListener.OnNotifyResponseDelegate.html",
+          "hash": "c+kjulHY3tFYspQB5LhmRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.EventListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.EventListener.html",
+          "hash": "jDurOW9C/PFvbC00OLYurw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.EventLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.EventLog.html",
+          "hash": "7MM4KjBsm76U2Je/fNUQJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.EventLogType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.EventLogType.html",
+          "hash": "Pa44OHQJtjmUg69iSxY/OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Factory.html",
+          "hash": "PbZfqboZ+4eXMTzo/iHUwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Friend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Friend.html",
+          "hash": "dZ091kgZfU8Zs/fuB5GeHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendCapability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendCapability.html",
+          "hash": "qzDhe4c4A3G6eQM1zDzAjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendList.html",
+          "hash": "1m+KEVuo1Qjx0NtPOvgszw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.OnContactCreatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.OnContactCreatedDelegate.html",
+          "hash": "0fWMWD5MC3Qy62FWKTnnwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.OnContactDeletedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.OnContactDeletedDelegate.html",
+          "hash": "wf28y+2Omii+7DgKtWpxdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.OnContactUpdatedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.OnContactUpdatedDelegate.html",
+          "hash": "ZoD3pi2H4slPBC931eQqow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.OnPresenceReceivedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.OnPresenceReceivedDelegate.html",
+          "hash": "jSGVhMK0n8qz1jlvvPUJXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.OnSyncStatusChangedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.OnSyncStatusChangedDelegate.html",
+          "hash": "+oNkiczQ+P5J9DucZDvoZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListListener.html",
+          "hash": "QJVb/NiPQoyl7QkTU9zlIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListStatus.html",
+          "hash": "oKU9EALQ3/6GttfHPo1YHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.FriendListSyncStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.FriendListSyncStatus.html",
+          "hash": "Wbq6pfcjYqYdwNFhf+AfDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.GlobalState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.GlobalState.html",
+          "hash": "rI6Dh92yt/faMjwBoV4OTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Headers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Headers.html",
+          "hash": "bERNWzbLi0FcqFTZt7fgqA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.IceState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.IceState.html",
+          "hash": "4pocN/O1v4o5UG3WnWifJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ImNotifPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ImNotifPolicy.html",
+          "hash": "rXYk2TRvKnDfubz/drQhUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.InfoMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.InfoMessage.html",
+          "hash": "teR8m4PNhsU33gAJYeBdjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LimeState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LimeState.html",
+          "hash": "xbjYTzH5Y1h79fVYhI65og=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LinphoneException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LinphoneException.html",
+          "hash": "GWeC0/aAmbzTZYljm2SHGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LinphoneObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LinphoneObject.html",
+          "hash": "tW2EofuRZtRYRtcgTiiHPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LinphoneWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LinphoneWrapper.html",
+          "hash": "ztisYrYm72v3vaUMxS7UsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LogCollectionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LogCollectionState.html",
+          "hash": "Zb6+Vu4InFRCkO7m4vs0hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LogLevel.html",
+          "hash": "dR4IwweQvTOBfgU7v0Sa6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LoggingService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LoggingService.html",
+          "hash": "bAuEHPiC9w6dTDb17YhhUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LoggingServiceListener.OnLogMessageWrittenDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LoggingServiceListener.OnLogMessageWrittenDelegate.html",
+          "hash": "aKq8tkVBhqAQjel79XBKiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.LoggingServiceListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.LoggingServiceListener.html",
+          "hash": "mcJWSQZfSrvUHvDdL6xwXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.MagicSearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.MagicSearch.html",
+          "hash": "2A0cOjDYJITjG85lz11TyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.MediaDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.MediaDirection.html",
+          "hash": "6I8ahBodS/WEftHxyLlnSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.MediaEncryption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.MediaEncryption.html",
+          "hash": "4B8MbS9PycrOaub4dAqGiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.MediaResourceMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.MediaResourceMode.html",
+          "hash": "8pHwxMYoH70dl97NyHGJsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.MediastreamerFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.MediastreamerFactory.html",
+          "hash": "sALjwIqit8Ncoq1Izi67FA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.NatPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.NatPolicy.html",
+          "hash": "4uX5Xt2cn0cjGRypyNjF4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Participant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Participant.html",
+          "hash": "P0fyHbAKnBFeLSbWZWaFDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ParticipantDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ParticipantDevice.html",
+          "hash": "6vdGtt7+ArLAE6Jo8iD0fA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ParticipantDeviceIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ParticipantDeviceIdentity.html",
+          "hash": "NUFoQcQVv5G1ULgXSW2UHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ParticipantImdnState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ParticipantImdnState.html",
+          "hash": "DxZ9A/M5PUlvj8Db0FX+YA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PayloadType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PayloadType.html",
+          "hash": "EGBrtvT9c48clTvPvEBF2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Player.html",
+          "hash": "RlLBnUXfs8n5Ze9LmehbMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PlayerListener.OnEofReachedDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PlayerListener.OnEofReachedDelegate.html",
+          "hash": "4ji70QMWZ0zwPHMzDTXxnw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PlayerListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PlayerListener.html",
+          "hash": "v9GR3QJLQl1wyx7AMod56Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PlayerState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PlayerState.html",
+          "hash": "677FU3vnlvykMhs0yRPMdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceActivity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceActivity.html",
+          "hash": "Du5gdhSPN78BEToCIdcgsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceActivityType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceActivityType.html",
+          "hash": "wvy1cP153/ifjGU1ic/Bww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceBasicStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceBasicStatus.html",
+          "hash": "VjP03kK8iRsE2EOYV2uYnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceModel.html",
+          "hash": "P1Ms9G7K5JGXQv10k4XJ8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceNote.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceNote.html",
+          "hash": "4WViPZNjEqsyeEOl4AGlQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresencePerson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresencePerson.html",
+          "hash": "v3OxfpRzaE/SOo+F4bhMoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PresenceService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PresenceService.html",
+          "hash": "uOfkCWFlram+UMlyFtcSVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Privacy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Privacy.html",
+          "hash": "q/EnRpci486+XDT4fTETyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ProxyConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ProxyConfig.html",
+          "hash": "971USU10NgiJPfqgUFYttA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PublishState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PublishState.html",
+          "hash": "2Zs3fpIREAsx21fl4wrDNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.PushNotificationMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.PushNotificationMessage.html",
+          "hash": "83zj3o7iORBpEBmppPys/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Range.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Range.html",
+          "hash": "+WV4szptd00XRhXGeKvFlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Reason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Reason.html",
+          "hash": "fOhdI1vNezkBcokkpgUXuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.RegistrationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.RegistrationState.html",
+          "hash": "+DbICuaD5YN447Gv01Bz8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SearchResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SearchResult.html",
+          "hash": "iBAqR9AbyOnz+2aOJwLCQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SecurityEventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SecurityEventType.html",
+          "hash": "jZ7RGcQOzO6yvdQixVN7YQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SessionExpiresRefresher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SessionExpiresRefresher.html",
+          "hash": "9GPSmg3L9sGI4qPfoDwDUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.StreamType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.StreamType.html",
+          "hash": "cDprQIIyTwuD8DytUXyM3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SubscribePolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SubscribePolicy.html",
+          "hash": "VhJUI9WmKFB1CA+NXcei1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SubscriptionDir.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SubscriptionDir.html",
+          "hash": "W3FYXwN4jyKNZUiJTyRuAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.SubscriptionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.SubscriptionState.html",
+          "hash": "f+NAkCHgNZqblwZcvvZZZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ToneID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ToneID.html",
+          "hash": "UyqaOVpkT2kspIMnixPo8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.TransportType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.TransportType.html",
+          "hash": "ufVanmd3/k+ypIVjUEKzhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Transports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Transports.html",
+          "hash": "6dArXbBGnunHJQ89np0dtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Tunnel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Tunnel.html",
+          "hash": "f8j0dfNeJF/aHlD76BAjFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.TunnelConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.TunnelConfig.html",
+          "hash": "y9LTkI9pim0E7tizo0ymHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.TunnelMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.TunnelMode.html",
+          "hash": "04deWi+AdB0Mjdg8omHCxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.UpnpState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.UpnpState.html",
+          "hash": "cqsMtVhxg0FBm5amxBpQSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.Vcard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.Vcard.html",
+          "hash": "isvNc1MoGLWp/6cv3QDoJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.VersionUpdateCheckResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.VersionUpdateCheckResult.html",
+          "hash": "gbAmsxj1cvwk76+2fViMYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.VideoActivationPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.VideoActivationPolicy.html",
+          "hash": "NS8PjSKGlKNPHiRPym/8ww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.VideoDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.VideoDefinition.html",
+          "hash": "zMyreIB+3M7AnNczbst4wg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcArgType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcArgType.html",
+          "hash": "ZLjvL2V+XpGQk0mVKcKGsg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcRequest.html",
+          "hash": "uek6+EMBtd+vl2LFkeIpOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcRequestListener.OnResponseDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcRequestListener.OnResponseDelegate.html",
+          "hash": "tFRcDeRZUJj04Zl151hJcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcRequestListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcRequestListener.html",
+          "hash": "LqSvsUMtB3N7it/F4XgQ1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcSession.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcSession.html",
+          "hash": "2g+9k/sJTuLHJzubuwHgbg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.XmlRpcStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.XmlRpcStatus.html",
+          "hash": "Ss32aEf/BOHZF85yvipyug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.ZrtpPeerStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.ZrtpPeerStatus.html",
+          "hash": "S9ffYI1Sc2V3LwfZTK53Sg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Linphone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Linphone.html",
+          "hash": "N6SyRgBJkJoDKrZtEKVYow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "yJ8K9Q8L08Kn3PAqRvoWkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "VuKB+1TZgQ89hyfkmeABfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 250,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

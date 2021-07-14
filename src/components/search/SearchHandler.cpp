@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2021 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -27,5 +27,5 @@ SearchHandler::SearchHandler(QObject * parent) : QObject(parent){
 }
 
 void SearchHandler::onSearchResultsReceived(const std::shared_ptr<linphone::MagicSearch> & magicSearch){
-	emit searchReceived(magicSearch->getLastSearch());
+//	emit searchReceived(magicSearch->getLastSearch());
 }

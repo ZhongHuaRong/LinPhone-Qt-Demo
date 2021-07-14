@@ -1,0 +1,15 @@
+# libspeexdsp pkg-config source file
+
+prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop
+exec_prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/bin
+libdir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/lib
+includedir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/include
+
+Name: speexdsp
+Description: Speexdsp is a speech processing library that goes along with the Speex codec
+Version: 1.2rc1
+Requires: 
+Conflicts:
+Libs: -LC:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/lib -lspeexdsp
+Libs.private: -lm
+Cflags: -IC:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/include

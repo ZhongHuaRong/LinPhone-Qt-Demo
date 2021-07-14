@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -242,13 +242,13 @@ QString FileDownloader::synchronousDownload(const QUrl &url, const QString &dest
       *pIsOver=true;
       });
     downloader.download();
-    if(QTest::qWaitFor([&]() {return isOver;}, DefaultTimeout)){
-      filePath = downloader.getDestinationFileName();
-      if(!QFile::exists(filePath)) {
-        filePath = "";
-        qWarning() << "FileDownloader: Cannot download the specified file";
-      }
-    }
+//    if(QTest::qWaitFor([&]() {return isOver;}, DefaultTimeout)){
+//      filePath = downloader.getDestinationFileName();
+//      if(!QFile::exists(filePath)) {
+//        filePath = "";
+//        qWarning() << "FileDownloader: Cannot download the specified file";
+//      }
+//    }
   }
   return filePath;
 }

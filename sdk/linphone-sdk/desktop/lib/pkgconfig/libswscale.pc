@@ -1,0 +1,14 @@
+prefix=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop
+exec_prefix=${prefix}
+libdir=C:/GitLab-Runner/builds/651dcee5/2/BC/public/linphone-sdk/build-desktop/linphone-sdk/desktop/lib
+includedir=${prefix}/include
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 2.1.100
+Requires: 
+Requires.private: libavutil = 51.35.100
+Conflicts:
+Libs: -L${libdir} -lswscale 
+Libs.private: -lm
+Cflags: -I${includedir}

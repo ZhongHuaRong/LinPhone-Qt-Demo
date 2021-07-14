@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
  * This file is part of linphone-desktop
@@ -184,7 +184,8 @@ void CoreManager::uninit () {
     mInstance->lockVideoRender();// Stop do iterations. We have to protect GUI.
     mInstance->mCore->stop();
     mInstance->unlockVideoRender();
-    QTest::qWaitFor([&]() {return mInstance == nullptr;},10000);
+	mInstance = nullptr;
+//    QTest::qWaitFor([&]() {return mInstance == nullptr;},10000);
     if( mInstance){
         qWarning() << "Core couldn't destroy in time. It may lead to have multiple session of Core";
         mInstance = nullptr;
