@@ -43,7 +43,8 @@ void ConfigTest::test_case1()
 	qInfo() << QDir::currentPath();
 	QVERIFY(config);
 	config->setString("buffer","test","123");
-	qInfo() << QString::fromStdString(config->getString("buffer","test",""));
+	auto str = config->getString("buffer","test","");
+	qInfo() << QString::fromLocal8Bit(str.c_str(),str.size());
 	QVERIFY(config->getString("buffer","test","") == "123");
 }
 
