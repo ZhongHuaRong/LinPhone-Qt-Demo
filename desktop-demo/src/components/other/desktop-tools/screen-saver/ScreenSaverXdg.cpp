@@ -18,23 +18,39 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_PROVIDER_H_
-#define IMAGE_PROVIDER_H_
+#include <QProcess>
 
-#include <QQuickImageProvider>
-#include <QDebug>
-#include "components/other/colors/Colors.hpp"
+#include "ScreenSaverXdg.hpp"
 
 // =============================================================================
 
-class ImageProvider : public QQuickImageProvider {
-public:
-  ImageProvider ();
+namespace {
+  constexpr char Program[] = "xdg-screensaver";
+  const QStringList Arguments{"reset"};
 
-  QImage requestImage (const QString &id, QSize *size, const QSize &requestedSize) override;
-  QPixmap requestPixmap (const QString &id, QSize *size, const QSize &requestedSize) override;
+  constexpr int Interval = 30000;
+}
 
-  static const QString ProviderId;
-};
+ScreenSaverXdg::ScreenSaverXdg (QObject *parent) : QObject(parent) {
+  mTimer.setInterval(Interval);
+  QObject::connect(&mTimer, &QTimer::timeout, []() {
+    // Legacy for systems without DBus screensaver.
+    QProcess::startDetached(Program, Arguments);
+  });
+}
 
-#endif // IMAGE_PROVIDER_H_
+bool ScreenSaverXdg::getScreenSaverStatus () const {
+  return !mTimer.isActive();
+}
+
+void ScreenSaverXdg::setScreenSaverStatus (bool status) {
+  if (status == !mTimer.isActive())
+    return;
+
+  if (status)
+    mTimer.stop();
+  else
+    mTimer.start();
+
+  emit screenSaverStatusChanged(status);
+}

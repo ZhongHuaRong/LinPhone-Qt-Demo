@@ -42,10 +42,6 @@ AbstractEventCountNotifier::AbstractEventCountNotifier (QObject *parent) : QObje
     this, &AbstractEventCountNotifier::handleChatModelCreated
   );
   QObject::connect(
-    coreManager, &CoreManager::historyModelCreated,
-    this, &AbstractEventCountNotifier::handleHistoryModelCreated
-  );
-  QObject::connect(
     coreManager->getHandlers().get(), &CoreHandlers::messageReceived,
     this, &AbstractEventCountNotifier::updateUnreadMessageCount
   );

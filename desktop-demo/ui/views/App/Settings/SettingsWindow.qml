@@ -90,20 +90,6 @@ ApplicationWindow {
           width: implicitWidth
 	  //onClicked: SettingsModel.settingsButtonClicked("network")
         }
-
-        TabButton {
-          iconName: 'settings_advanced'
-          text: qsTr('uiTab')
-          width: implicitWidth
-  	  //onClicked: SettingsModel.settingsButtonClicked("ui")
-        }
-
-        TabButton {
-          iconName: 'settings_advanced'
-          text: qsTr('uiAdvanced')
-          width: implicitWidth
-	  //onClicked: SettingsModel.settingsButtonClicked("advanced")
-        }
       }
 
       Rectangle {
@@ -140,9 +126,7 @@ ApplicationWindow {
       SettingsAudio {}
       SettingsVideo {}
       SettingsCallsChat {}
-      SettingsNetwork {}
-      SettingsUi {}
-      SettingsAdvanced {}
+      SettingsNetwork{}
     }
 
     // -------------------------------------------------------------------------

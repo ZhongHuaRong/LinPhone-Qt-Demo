@@ -31,13 +31,10 @@
 #include <QQmlFileSelector>
 #include <QQmlContext>
 #include <QQuickWindow>
-#include <QSystemTrayIcon>
 #include <QTimer>
 
 #include "config.h"
-#include "cli/Cli.hpp"
 #include "components/Components.hpp"
-#include "logger/Logger.hpp"
 #include "paths/Paths.hpp"
 #include "providers/AvatarProvider.hpp"
 #include "providers/ImageProvider.hpp"
@@ -208,9 +205,8 @@ bool App::setFetchConfig (QCommandLineParser *parser) {
 }
 // -----------------------------------------------------------------------------
 
-App::App (int &argc, char *argv[]) : SingleApplication(argc, argv, true, Mode::User | Mode::ExcludeAppPath | Mode::ExcludeAppVersion) {
-
-  connect(this, SIGNAL(applicationStateChanged(Qt::ApplicationState)), this, SLOT(stateChanged(Qt::ApplicationState)));
+App::App (int &argc, char *argv[]) :
+   QApplication(argc, argv) {
 
   setWindowIcon(QIcon(LinphoneUtils::WindowIconPath));
 
@@ -220,10 +216,6 @@ App::App (int &argc, char *argv[]) : SingleApplication(argc, argv, true, Mode::U
   // Initialize logger.
   shared_ptr<linphone::Config> config = getConfigIfExists(getConfigPathIfExists(*mParser));
 
-//  Logger::init(config);
-  if (mParser->isSet("verbose"))
-    Logger::getInstance()->setVerbose(true);
-
   // List available locales.
   for (const auto &locale : QDir(LanguagePath).entryList())
     mAvailableLocales << QLocale(locale);
@@ -232,20 +224,6 @@ App::App (int &argc, char *argv[]) : SingleApplication(argc, argv, true, Mode::U
   mTranslator = new DefaultTranslator(this);
   mDefaultTranslator = new DefaultTranslator(this);
   initLocale(config);
-
-  if (mParser->isSet("help")) {
-    mParser->showHelp();
-  }
-
-  if (mParser->isSet("cli-help")) {
-    Cli::showHelp();
-    ::exit(EXIT_SUCCESS);
-  }
-
-  if (mParser->isSet("version"))
-    mParser->showVersion();
-
-  mAutoStart = autoStartEnabled();
 
   qInfo() << QStringLiteral("Starting " APPLICATION_NAME " (bin: " EXECUTABLE_NAME ")");
   qInfo() << QStringLiteral("Use locale: %1").arg(mLocale);
@@ -319,7 +297,6 @@ void App::initContentApp () {
     delete mEngine;
 
     mNotifier = nullptr;
-    mSystemTrayIcon = nullptr;
     //
     CoreManager::uninit();
     removeTranslator(mTranslator);
@@ -333,30 +310,17 @@ void App::initContentApp () {
     initLocale(config);
   } else {
     configPath = getConfigPathIfExists(*mParser);
+    qDebug() << mParser->value("config") << configPath.c_str();
     config = getConfigIfExists(configPath);
     // Update and download codecs.
     VideoCodecsModel::updateCodecs();
     VideoCodecsModel::downloadUpdatableCodecs(this);
 
-    // Don't quit if last window is closed!!!
-    setQuitOnLastWindowClosed(false);
-
-    // Deal with received messages and CLI.
-    QObject::connect(this, &App::receivedMessage, this, [](int, const QByteArray &byteArray) {
-      QString command(byteArray);
-      qInfo() << QStringLiteral("Received command from other application: `%1`.").arg(command);
-      Cli::executeCommand(command);
-    });
-
     #ifndef Q_OS_MACOS
       mustBeIconified = mParser->isSet("iconified");
     #endif // ifndef Q_OS_MACOS
 
-    mColors = new Colors(this);
   }
-
-  // Change colors if necessary.
-  mColors->useConfig(config);
 
   // Init core.
   CoreManager::init(this, Utils::coreStringToAppString(configPath));
@@ -410,15 +374,6 @@ void App::initContentApp () {
         openAppAfterInit(mustBeIconified);
     }
   );
-
-  // Execute command argument if needed.
-  const QString commandArgument = getCommandArgument();
-  if (!commandArgument.isEmpty()) {
-    Cli::CommandFormat format;
-    Cli::executeCommand(commandArgument, &format);
-    if (format == Cli::UriFormat || format == Cli::UrlFormat )
-      mustBeIconified = true;
-  }
 }
 
 // -----------------------------------------------------------------------------
@@ -427,26 +382,6 @@ QString App::getCommandArgument () {
   const QStringList &arguments = mParser->positionalArguments();
   return arguments.empty() ? QString("") : arguments[0];
 }
-
-// -----------------------------------------------------------------------------
-
-#ifdef Q_OS_MACOS
-
-  bool App::event (QEvent *event) {
-    if (event->type() == QEvent::FileOpen) {
-      const QString url = static_cast<QFileOpenEvent *>(event)->url().toString();
-      if (isSecondary()) {
-        sendMessage(url.toLocal8Bit(), -1);
-        ::exit(EXIT_SUCCESS);
-      }
-
-      Cli::executeCommand(url);
-    }
-
-    return SingleApplication::event(event);
-  }
-
-#endif // ifdef Q_OS_MACOS
 
 // -----------------------------------------------------------------------------
 
@@ -487,9 +422,6 @@ void App::smartShowWindow (QQuickWindow *window) {
 // -----------------------------------------------------------------------------
 bool App::hasFocus () const {
   return getMainWindow()->isActive() || (mCallsWindow && mCallsWindow->isActive());
-}
-void App::stateChanged(Qt::ApplicationState pState) {
-    DesktopTools::applicationStateChanged(pState);
 }
 // -----------------------------------------------------------------------------
 
@@ -579,7 +511,6 @@ void App::registerTypes () {
   qInfo() << QStringLiteral("Registering types...");
 
   qRegisterMetaType<shared_ptr<linphone::ProxyConfig>>();
-  qRegisterMetaType<ChatModel::EntryType>();
   qRegisterMetaType<shared_ptr<linphone::SearchResult>>();
   qRegisterMetaType<std::list<std::shared_ptr<linphone::SearchResult> > >();
 
@@ -588,14 +519,12 @@ void App::registerTypes () {
   registerType<CallsListProxyModel>("CallsListProxyModel");
   registerType<Camera>("Camera");
   registerType<CameraPreview>("CameraPreview");
-  registerType<ChatProxyModel>("ChatProxyModel");
   registerType<ConferenceHelperModel>("ConferenceHelperModel");
   registerType<ConferenceModel>("ConferenceModel");
   registerType<ContactsListProxyModel>("ContactsListProxyModel");
   registerType<ContactsImporterListProxyModel>("ContactsImporterListProxyModel");
   registerType<FileDownloader>("FileDownloader");
   registerType<FileExtractor>("FileExtractor");
-  registerType<HistoryProxyModel>("HistoryProxyModel");
   registerType<LdapProxyModel>("LdapProxyModel");
   registerType<SipAddressesProxyModel>("SipAddressesProxyModel");
   registerType<SearchSipAddressesModel>("SearchSipAddressesModel");
@@ -611,11 +540,9 @@ void App::registerTypes () {
   registerSingletonType<VideoCodecsModel>("VideoCodecsModel");
 
   registerUncreatableType<CallModel>("CallModel");
-  registerUncreatableType<ChatModel>("ChatModel");
   registerUncreatableType<ConferenceHelperModel::ConferenceAddModel>("ConferenceAddModel");
   registerUncreatableType<ContactModel>("ContactModel");
   registerUncreatableType<ContactsImporterModel>("ContactsImporterModel");
-  registerUncreatableType<HistoryModel>("HistoryModel");
   registerUncreatableType<LdapModel>("LdapModel");
   registerUncreatableType<SipAddressObserver>("SipAddressObserver");
   registerUncreatableType<VcardModel>("VcardModel");
@@ -648,68 +575,8 @@ void App::registerToolTypes () {
 void App::registerSharedToolTypes () {
   qInfo() << QStringLiteral("Registering shared tool types...");
 
-  registerSharedToolType<Colors, App, &App::getColors>("Colors");
-}
-
-// -----------------------------------------------------------------------------
-
-void App::setTrayIcon () {
-  QQuickWindow *root = getMainWindow();
-  QSystemTrayIcon *systemTrayIcon = new QSystemTrayIcon(mEngine);
-
-  // trayIcon: Right click actions.
-  QAction *settingsAction = new QAction(tr("settings"), root);
-  root->connect(settingsAction, &QAction::triggered, root, [this] {
-    App::smartShowWindow(getSettingsWindow());
-  });
-
-  QAction *aboutAction = new QAction(tr("about"), root);
-  root->connect(aboutAction, &QAction::triggered, root, [root] {
-    App::smartShowWindow(root);
-    QMetaObject::invokeMethod(
-      root, AttachVirtualWindowMethodName, Qt::DirectConnection,
-      Q_ARG(QVariant, QUrl(AboutPath)), Q_ARG(QVariant, QVariant()), Q_ARG(QVariant, QVariant())
-    );
-  });
-
-  QAction *restoreAction = new QAction(tr("restore"), root);
-  root->connect(restoreAction, &QAction::triggered, root, [root] {
-    smartShowWindow(root);
-  });
-
-  QAction *quitAction = new QAction(tr("quit"), root);
-  root->connect(quitAction, &QAction::triggered, this, &App::quit);
-
-  // trayIcon: Left click actions.
-  QMenu *menu = new QMenu();
-  root->connect(systemTrayIcon, &QSystemTrayIcon::activated, [root](
-    QSystemTrayIcon::ActivationReason reason
-  ) {
-    if (reason == QSystemTrayIcon::Trigger) {
-      if (root->visibility() == QWindow::Hidden)
-        smartShowWindow(root);
-      else
-        root->hide();
-      }
-  });
-  menu->setTitle(APPLICATION_NAME);
-  // Build trayIcon menu.
-  menu->addAction(settingsAction);
-  menu->addAction(aboutAction);
-  menu->addSeparator();
-  menu->addAction(restoreAction);
-  menu->addSeparator();
-  menu->addAction(quitAction);
-
-
-
-  systemTrayIcon->setContextMenu(menu);
-  systemTrayIcon->setIcon(QIcon(LinphoneUtils::WindowIconPath));
-  systemTrayIcon->setToolTip(APPLICATION_NAME);
-  systemTrayIcon->show();
-  mSystemTrayIcon = systemTrayIcon;
-  if(!QSystemTrayIcon::isSystemTrayAvailable())
-      qInfo() << "System tray is not available";
+  registerToolType<Colors>("Colors");
+//  registerSharedToolType<Colors, App, &App::getColors>("Colors");
 }
 
 // -----------------------------------------------------------------------------
@@ -723,10 +590,9 @@ void App::initLocale (const shared_ptr<linphone::Config> &config) {
 
   if (!installLocale(*this, *mDefaultTranslator, QLocale(mLocale)))
     qFatal("Unable to install default translator.");
-//  installLocale(*this, *mDefaultTranslator, QLocale(mLocale));
 
-//  if (config)
-//    locale = Utils::coreStringToAppString(config->getString(SettingsModel::UiSection, "locale", ""));
+  if (config)
+    locale = Utils::coreStringToAppString(config->getString(SettingsModel::UiSection, "locale", ""));
 
   if (!locale.isEmpty() && installLocale(*this, *mTranslator, QLocale(locale))) {
     mLocale = locale;
@@ -764,118 +630,6 @@ QString App::getLocale () const {
 
 // -----------------------------------------------------------------------------
 
-#ifdef Q_OS_LINUX
-
-void App::setAutoStart (bool enabled) {
-  if (enabled == mAutoStart)
-    return;
-
-  QDir dir(AutoStartDirectory);
-  if (!dir.exists() && !dir.mkpath(AutoStartDirectory)) {
-    qWarning() << QStringLiteral("Unable to build autostart dir path: `%1`.").arg(AutoStartDirectory);
-    return;
-  }
-
-  const QString confPath(AutoStartDirectory + EXECUTABLE_NAME ".desktop");
-  qInfo() << QStringLiteral("Updating `%1`...").arg(confPath);
-  QFile file(confPath);
-
-  if (!enabled) {
-    if (file.exists() && !file.remove()) {
-      qWarning() << QLatin1String("Unable to remove autostart file: `" EXECUTABLE_NAME ".desktop`.");
-      return;
-    }
-
-    mAutoStart = enabled;
-    emit autoStartChanged(enabled);
-    return;
-  }
-
-  if (!file.open(QFile::WriteOnly)) {
-    qWarning() << "Unable to open autostart file: `" EXECUTABLE_NAME ".desktop`.";
-    return;
-  }
-
-  const QString binPath(applicationFilePath());
-
-  // Check if installation is done via Flatpak, AppImage, or classic package
-  // in order to rewrite a correct exec path for autostart
-  QString exec;
-  qDebug() << "binpath=" << binPath;
-  if (binPath.startsWith("/app")) { //Flatpak
-    exec = QStringLiteral("flatpak run " APPLICATION_ID);
-    qDebug() << "exec path autostart set flatpak=" << exec;
-  }
-  else if (binPath.startsWith("/tmp/.mount")) { //Appimage
-    exec = QProcessEnvironment::systemEnvironment().value(QStringLiteral("APPIMAGE"));
-    qDebug() << "exec path autostart set appimage=" << exec;
-  }
-  else { //classic package
-    exec = binPath;
-    qDebug() << "exec path autostart set classic package=" << exec;
-  }
-
-  QTextStream(&file) << QString(
-    "[Desktop Entry]\n"
-    "Name=" APPLICATION_NAME "\n"
-    "GenericName=SIP Phone\n"
-    "Comment=" APPLICATION_DESCRIPTION "\n"
-    "Type=Application\n"
-    "Exec=" + exec + " --iconified\n"
-    "Terminal=false\n"
-    "Categories=Network;Telephony;\n"
-    "MimeType=x-scheme-handler/sip-linphone;x-scheme-handler/sip;x-scheme-handler/sips-linphone;x-scheme-handler/sips;x-scheme-handler/tel;x-scheme-handler/callto;\n"
-  );
-
-  mAutoStart = enabled;
-  emit autoStartChanged(enabled);
-}
-
-#elif defined(Q_OS_MACOS)
-
-void App::setAutoStart (bool enabled) {
-  if (enabled == mAutoStart)
-    return;
-
-  if (getMacOsBundlePath().isEmpty()) {
-    qWarning() << QStringLiteral("Application is not installed. Unable to change autostart state.");
-    return;
-  }
-
-  if (enabled)
-    QProcess::execute(OsascriptExecutable, {
-      "-e", "tell application \"System Events\" to make login item at end with properties"
-      "{ path: \"" + getMacOsBundlePath() + "\", hidden: false }"
-    });
-  else
-    QProcess::execute(OsascriptExecutable, {
-      "-e", "tell application \"System Events\" to delete login item \"" + getMacOsBundleName() + "\""
-    });
-
-  mAutoStart = enabled;
-  emit autoStartChanged(enabled);
-}
-
-#else
-
-void App::setAutoStart (bool enabled) {
-  if (enabled == mAutoStart)
-    return;
-
-  QSettings settings(AutoStartSettingsFilePath, QSettings::NativeFormat);
-  if (enabled)
-    settings.setValue(EXECUTABLE_NAME, QDir::toNativeSeparators(applicationFilePath()));
-  else
-    settings.remove(EXECUTABLE_NAME);
-
-  mAutoStart = enabled;
-  emit autoStartChanged(enabled);
-}
-
-#endif // ifdef Q_OS_LINUX
-
-// -----------------------------------------------------------------------------
-
 void App::openAppAfterInit (bool mustBeIconified) {
   qInfo() << QStringLiteral("Open " APPLICATION_NAME " app.");
   auto coreManager = CoreManager::getInstance();
@@ -892,27 +646,9 @@ void App::openAppAfterInit (bool mustBeIconified) {
 
   QQuickWindow *mainWindow = getMainWindow();
 
-  #ifndef __APPLE__
-    // Enable TrayIconSystem.
-    if (!QSystemTrayIcon::isSystemTrayAvailable())
-      qWarning("System tray not found on this system.");
-    else
-      setTrayIcon();
-  #endif // ifndef __APPLE__
-
   // Display Assistant if it does not exist proxy config.
   if (coreManager->getCore()->getProxyConfigList().empty())
     QMetaObject::invokeMethod(mainWindow, "setView", Q_ARG(QVariant, AssistantViewName), Q_ARG(QVariant, QString("")));
-
-  #ifdef ENABLE_UPDATE_CHECK
-    QTimer *timer = new QTimer(mEngine);
-    timer->setInterval(VersionUpdateCheckInterval);
-
-    QObject::connect(timer, &QTimer::timeout, this, &App::checkForUpdate);
-    timer->start();
-
-    checkForUpdate();
-  #endif // ifdef ENABLE_UPDATE_CHECK
 
   if(setFetchConfig(mParser))
         restart();
@@ -944,24 +680,4 @@ void App::openAppAfterInit (bool mustBeIconified) {
 #endif
       setOpened(true);
   }
-}
-
-// -----------------------------------------------------------------------------
-QString App::getStrippedApplicationVersion(){// x.y.z but if 'z-*' then x.y.z-1
-  QString currentVersion = applicationVersion();
-  QStringList versions = currentVersion.split('.');
-  if(versions.size() >=3){
-    currentVersion = versions[0]+"."+versions[1]+".";
-    QStringList patchVersions = versions[2].split('-');
-    if( patchVersions.size() > 1)
-      currentVersion += QString::number(patchVersions[0].toInt()-1);
-    else
-      currentVersion += patchVersions[0];
-  }
-  return currentVersion;
-}
-void App::checkForUpdate () {
-  CoreManager::getInstance()->getCore()->checkForUpdate(
-    Utils::appStringToCoreString(getStrippedApplicationVersion())
-  );
 }

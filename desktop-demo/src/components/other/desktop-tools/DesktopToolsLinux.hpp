@@ -18,23 +18,37 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_PROVIDER_H_
-#define IMAGE_PROVIDER_H_
+#ifndef DESKTOP_TOOLS_LINUX_H_
+#define DESKTOP_TOOLS_LINUX_H_
 
-#include <QQuickImageProvider>
-#include <QDebug>
-#include "components/other/colors/Colors.hpp"
+#include "components/other/desktop-tools/screen-saver/ScreenSaverDBus.hpp"
+#include "components/other/desktop-tools/screen-saver/ScreenSaverXdg.hpp"
 
 // =============================================================================
 
-class ImageProvider : public QQuickImageProvider {
+class DesktopTools : public QObject {
+  Q_OBJECT;
+
+  Q_PROPERTY(bool screenSaverStatus READ getScreenSaverStatus WRITE setScreenSaverStatus NOTIFY screenSaverStatusChanged);
+
 public:
-  ImageProvider ();
+  DesktopTools (QObject *parent = Q_NULLPTR) : QObject(parent) {}
+  ~DesktopTools ();
 
-  QImage requestImage (const QString &id, QSize *size, const QSize &requestedSize) override;
-  QPixmap requestPixmap (const QString &id, QSize *size, const QSize &requestedSize) override;
+  bool getScreenSaverStatus () const;
+  void setScreenSaverStatus (bool status);
 
-  static const QString ProviderId;
+  static void init(){}
+  static void applicationStateChanged(Qt::ApplicationState){};
+
+signals:
+  void screenSaverStatusChanged (bool status);
+
+private:
+  bool mScreenSaverStatus = true;
+
+  ScreenSaverDBus screenSaverDBus;
+  ScreenSaverXdg screenSaverXdg;
 };
 
-#endif // IMAGE_PROVIDER_H_
+#endif // DESKTOP_TOOLS_LINUX_H_

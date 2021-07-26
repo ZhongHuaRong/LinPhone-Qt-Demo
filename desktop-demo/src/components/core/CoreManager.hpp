@@ -33,12 +33,9 @@ class QTimer;
 
 class AccountSettingsModel;
 class CallsListModel;
-class ChatModel;
 class ContactsListModel;
 class ContactsImporterListModel;
 class CoreHandlers;
-class EventCountNotifier;
-class HistoryModel;
 class LdapListModel;
 class SettingsModel;
 class SipAddressesModel;
@@ -49,8 +46,6 @@ class CoreManager : public QObject {
   Q_OBJECT;
 
   Q_PROPERTY(QString version READ getVersion CONSTANT)
-  Q_PROPERTY(QString downloadUrl READ getDownloadUrl CONSTANT)
-  Q_PROPERTY(int eventCount READ getEventCount NOTIFY eventCountChanged)
 
 public:
   bool started () const {
@@ -65,11 +60,6 @@ public:
     Q_CHECK_PTR(mHandlers);
     return mHandlers;
   }
-
-  std::shared_ptr<ChatModel> getChatModel (const QString &peerAddress, const QString &localAddress);
-  bool chatModelExists (const QString &sipAddress, const QString &localAddress);
-  
-  HistoryModel* getHistoryModel();
 
   // ---------------------------------------------------------------------------
   // Video render lock.
@@ -101,8 +91,6 @@ public:
     Q_CHECK_PTR(mContactsImporterListModel);
     return mContactsImporterListModel;
   }
-  
-  
 
   SipAddressesModel *getSipAddressesModel () const {
     Q_CHECK_PTR(mSipAddressesModel);
@@ -141,9 +129,6 @@ public:
   Q_INVOKABLE void sendLogs () const;
   Q_INVOKABLE void cleanLogs () const;
 
-  int getMissedCallCount(const QString &peerAddress, const QString &localAddress) const;// Get missed call count from a chat (useful for showing bubbles on Timelines)
-  int getMissedCallCountFromLocal(const QString &localAddress) const;// Get missed call count from a chat (useful for showing bubbles on Timelines)
-
   static bool isInstanciated(){return mInstance!=nullptr;}
 
   bool isLastRemoteProvisioningGood();
@@ -158,12 +143,7 @@ public slots:
 signals:
   void coreManagerInitialized ();
 
-  void chatModelCreated (const std::shared_ptr<ChatModel> &chatModel);
-  void historyModelCreated (HistoryModel *historyModel);
-
   void logsUploaded (const QString &url);
-
-  void eventCountChanged (int count);
 
 private:
   CoreManager (QObject *parent, const QString &configPath);
@@ -177,13 +157,9 @@ private:
 
   QString getVersion () const;
 
-  int getEventCount () const;
-
   void iterate ();
 
   void handleLogsUploadStateChanged (linphone::Core::LogCollectionUploadState state, const std::string &info);
-
-  static QString getDownloadUrl ();
 
   std::shared_ptr<linphone::Core> mCore;
   std::shared_ptr<CoreHandlers> mHandlers;
@@ -199,10 +175,6 @@ private:
   SettingsModel *mSettingsModel = nullptr;
   AccountSettingsModel *mAccountSettingsModel = nullptr;
 
-  EventCountNotifier *mEventCountNotifier = nullptr;
-
-  QHash<QPair<QString, QString>, std::weak_ptr<ChatModel>> mChatModels;
-  HistoryModel * mHistoryModel = nullptr;
   LdapListModel *mLdapListModel = nullptr;
 
   QTimer *mCbsTimer = nullptr;

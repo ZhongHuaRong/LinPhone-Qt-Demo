@@ -58,18 +58,6 @@ Rectangle {
       onMovementStarted: Logic.handleMovementStarted()
 
       // -----------------------------------------------------------------------
-
-      Connections {
-        target: proxyModel
-
-        // When the view is changed (for example `Calls` -> `Messages`),
-        // the position is set at end and it can be possible to load
-        // more entries.
-        onEntryTypeFilterChanged: Logic.initView()
-        onMoreEntriesLoaded: Logic.handleMoreEntriesLoaded(n)
-      }
-
-      // -----------------------------------------------------------------------
       // Heading.
       // -----------------------------------------------------------------------
 
@@ -229,15 +217,4 @@ Rectangle {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Scroll at end if necessary.
-  // ---------------------------------------------------------------------------
-
-  Timer {
-    interval: 100
-    repeat: true
-    running: true
-
-    onTriggered: chat.bindToEnd && chat.positionViewAtEnd()
-  }
 }

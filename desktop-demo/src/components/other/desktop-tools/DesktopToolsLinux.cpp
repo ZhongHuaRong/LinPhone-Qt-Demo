@@ -18,23 +18,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_PROVIDER_H_
-#define IMAGE_PROVIDER_H_
-
-#include <QQuickImageProvider>
-#include <QDebug>
-#include "components/other/colors/Colors.hpp"
+#include "DesktopToolsLinux.hpp"
 
 // =============================================================================
 
-class ImageProvider : public QQuickImageProvider {
-public:
-  ImageProvider ();
+DesktopTools::~DesktopTools () {
+  setScreenSaverStatus(true);
+}
 
-  QImage requestImage (const QString &id, QSize *size, const QSize &requestedSize) override;
-  QPixmap requestPixmap (const QString &id, QSize *size, const QSize &requestedSize) override;
+bool DesktopTools::getScreenSaverStatus () const {
+  return mScreenSaverStatus;
+}
 
-  static const QString ProviderId;
-};
+void DesktopTools::setScreenSaverStatus (bool status) {
+  screenSaverDBus.setScreenSaverStatus(status);
+  screenSaverXdg.setScreenSaverStatus(status);
 
-#endif // IMAGE_PROVIDER_H_
+  bool newStatus = screenSaverDBus.getScreenSaverStatus() || screenSaverXdg.getScreenSaverStatus();
+  if (newStatus != mScreenSaverStatus) {
+    mScreenSaverStatus = newStatus;
+    emit screenSaverStatusChanged(mScreenSaverStatus);
+  }
+}

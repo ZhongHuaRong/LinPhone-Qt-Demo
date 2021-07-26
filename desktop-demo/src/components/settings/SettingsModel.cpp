@@ -26,7 +26,6 @@
 #include <cstdlib>
 #include <cmath>
 
-#include "app/logger/Logger.hpp"
 #include "app/paths/Paths.hpp"
 #include "components/core/CoreManager.hpp"
 #include "include/LinphoneApp/PluginNetworkHelper.hpp"
@@ -1258,7 +1257,7 @@ bool SettingsModel::getLogsEnabled () const {
 
 void SettingsModel::setLogsEnabled (bool status) {
 	mConfig->setInt(UiSection, "logs_enabled", status);
-	Logger::getInstance()->enable(status);
+//	Logger::getInstance()->enable(status);
 	emit logsEnabledChanged(status);
 }
 

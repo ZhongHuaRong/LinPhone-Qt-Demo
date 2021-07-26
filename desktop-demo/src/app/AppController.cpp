@@ -60,46 +60,6 @@ AppController::AppController (int &argc, char *argv[]) {
   // App creation.
   // ---------------------------------------------------------------------------
 
-  QQuickStyle::setStyle("Default");
-  if (mApp->isSecondary()) {
-    #ifdef Q_OS_MACOS
-      mApp->processEvents();
-    #endif // ifdef Q_OS_MACOS
-
-    QString command = mApp->getCommandArgument();
-    if( command.isEmpty()){
-      command = "show";
-      QStringList parametersList;
-      for(int i = 1 ; i < argc ; ++i){
-        QString a = argv[i];
-        if(a.startsWith("--"))// show is a command : remove <-->-style parameters
-          a.remove(0,2);
-        command += " "+a;
-      }
-    }
-    mApp->sendMessage(command.toLocal8Bit(), -1);
-
-    return;
-  }
-
-  // ---------------------------------------------------------------------------
-  // Fonts.
-  // ---------------------------------------------------------------------------
-
-  QDirIterator it(":", QDirIterator::Subdirectories);
-  while (it.hasNext()) {
-    QFileInfo info(it.next());
-
-    if (info.suffix() == QLatin1String("ttf") || info.suffix() == QLatin1String("otf")) {
-      QString path = info.absoluteFilePath();
-      if (path.startsWith(":/assets/fonts/"))
-        if(QFontDatabase::addApplicationFont(path)<0)
-          qWarning() << "Font cannot load : " << path;
-    }
-  }
-  qInfo() << "Available fonts : " << QFontDatabase().families();
-
-  mApp->setFont(QFont(DefaultFont));
 }
 
 AppController::~AppController () {

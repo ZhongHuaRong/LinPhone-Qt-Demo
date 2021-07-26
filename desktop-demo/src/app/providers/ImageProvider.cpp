@@ -25,7 +25,6 @@
 #include <QSvgRenderer>
 
 #include "app/App.hpp"
-#include "components/other/colors/Colors.hpp"
 
 #include "ImageProvider.hpp"
 
@@ -194,7 +193,7 @@ static QByteArray parseEndElement (const QXmlStreamReader &reader) {
 // -----------------------------------------------------------------------------
 
 static QByteArray computeContent (QFile &file) {
-  const Colors *colors = App::getInstance()->getColors();
+  const Colors colors;
 
   QByteArray content;
   QXmlStreamReader reader(&file);
@@ -213,7 +212,7 @@ static QByteArray computeContent (QFile &file) {
         break;
 
       case QXmlStreamReader::StartElement:
-        content.append(parseStartElement(reader, *colors));
+        content.append(parseStartElement(reader, colors));
         break;
 
       case QXmlStreamReader::EndElement:

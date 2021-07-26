@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-	desktop-demo \
-	test
+        desktop-demo \
+    quick-demo

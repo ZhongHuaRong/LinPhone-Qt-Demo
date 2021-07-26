@@ -160,22 +160,6 @@ ColumnLayout  {
   Chat {
     Layout.fillHeight: true
     Layout.fillWidth: true
-
-    proxyModel: ChatProxyModel {
-      id: chatProxyModel
-
-      Component.onCompleted: {
-        if (!SettingsModel.chatEnabled) {
-          setEntryTypeFilter(ChatModel.CallEntry)
-        }
-        resetMessageCount()
-      }
-
-      peerAddress: conversation.peerAddress
-      localAddress: conversation.localAddress
-      fullPeerAddress: conversation.fullPeerAddress
-      fullLocalAddress: conversation.fullLocalAddress
-    }
   }
 
   Connections {

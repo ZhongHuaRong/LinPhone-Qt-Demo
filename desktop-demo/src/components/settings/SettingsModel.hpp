@@ -160,7 +160,7 @@ class SettingsModel : public QObject {
 
     Q_PROPERTY(bool rlsUriEnabled READ getRlsUriEnabled WRITE setRlsUriEnabled NOTIFY rlsUriEnabledChanged)
 
-	// UI. -----------------------------------------------------------------------
+    // UI. -----------------------------------------------------------------------
 
     Q_PROPERTY(QString remoteProvisioning READ getRemoteProvisioning WRITE setRemoteProvisioning NOTIFY remoteProvisioningChanged)
 
@@ -170,11 +170,11 @@ class SettingsModel : public QObject {
 
     Q_PROPERTY(bool exitOnClose READ getExitOnClose WRITE setExitOnClose NOTIFY exitOnCloseChanged)
 
-	Q_PROPERTY(bool showLocalSipAccount READ getShowLocalSipAccount CONSTANT)
-	Q_PROPERTY(bool showStartChat READ getShowStartChatButton CONSTANT)
-	Q_PROPERTY(bool showStartVideoCallButton READ getShowStartVideoCallButton CONSTANT)
+    Q_PROPERTY(bool showLocalSipAccount READ getShowLocalSipAccount CONSTANT)
+    Q_PROPERTY(bool showStartChat READ getShowStartChatButton CONSTANT)
+    Q_PROPERTY(bool showStartVideoCallButton READ getShowStartVideoCallButton CONSTANT)
 
-	// Advanced. -----------------------------------------------------------------
+    // Advanced. -----------------------------------------------------------------
 
     Q_PROPERTY(QString logsFolder READ getLogsFolder WRITE setLogsFolder NOTIFY logsFolderChanged)
     Q_PROPERTY(QString logsUploadUrl READ getLogsUploadUrl WRITE setLogsUploadUrl NOTIFY logsUploadUrlChanged)
@@ -413,48 +413,48 @@ public:
 	void configureRlsUri ();
 	void configureRlsUri (const std::shared_ptr<const linphone::ProxyConfig> &proxyConfig);
 
-	// UI. -----------------------------------------------------------------------
+    // UI. -----------------------------------------------------------------------
 
-	QString getSavedScreenshotsFolder () const;
-	void setSavedScreenshotsFolder (const QString &folder);
+    QString getSavedScreenshotsFolder () const;
+    void setSavedScreenshotsFolder (const QString &folder);
 
-	QString getSavedCallsFolder () const;
-	void setSavedCallsFolder (const QString &folder);
+    QString getSavedCallsFolder () const;
+    void setSavedCallsFolder (const QString &folder);
 
-	QString getDownloadFolder () const;
-	void setDownloadFolder (const QString &folder);
+    QString getDownloadFolder () const;
+    void setDownloadFolder (const QString &folder);
 
-	QString getRemoteProvisioning () const;
-	void setRemoteProvisioning (const QString &remoteProvisioning);
+    QString getRemoteProvisioning () const;
+    void setRemoteProvisioning (const QString &remoteProvisioning);
 
-	bool getExitOnClose () const;
-	void setExitOnClose (bool value);
+    bool getExitOnClose () const;
+    void setExitOnClose (bool value);
 
-	bool getShowLocalSipAccount () const;
-	bool getShowStartChatButton () const;
-	bool getShowStartVideoCallButton () const;
+    bool getShowLocalSipAccount () const;
+    bool getShowStartChatButton () const;
+    bool getShowStartVideoCallButton () const;
 
-	// Advanced. ---------------------------------------------------------------------------
-	
-	
-	void accessAdvancedSettings();
+    // Advanced. ---------------------------------------------------------------------------
 
-	QString getLogsFolder () const;
-	void setLogsFolder (const QString &folder);
 
-	QString getLogsUploadUrl () const;
-	void setLogsUploadUrl (const QString &url);
+    void accessAdvancedSettings();
 
-	bool getLogsEnabled () const;
-	void setLogsEnabled (bool status);
+    QString getLogsFolder () const;
+    void setLogsFolder (const QString &folder);
 
-	QString getLogsEmail () const;
-	void setLogsEmail (const QString &email);
+    QString getLogsUploadUrl () const;
+    void setLogsUploadUrl (const QString &url);
 
-	// ---------------------------------------------------------------------------
+    bool getLogsEnabled () const;
+    void setLogsEnabled (bool status);
 
-	static QString getLogsFolder (const std::shared_ptr<linphone::Config> &config);
-	static bool getLogsEnabled (const std::shared_ptr<linphone::Config> &config);
+    QString getLogsEmail () const;
+    void setLogsEmail (const QString &email);
+
+    // ---------------------------------------------------------------------------
+
+    static QString getLogsFolder (const std::shared_ptr<linphone::Config> &config);
+    static bool getLogsEnabled (const std::shared_ptr<linphone::Config> &config);
 
 	// ---------------------------------------------------------------------------
 
@@ -582,29 +582,29 @@ signals:
 
 	void rlsUriEnabledChanged (bool status);
 
-	// UI. -----------------------------------------------------------------------
+    // UI. -----------------------------------------------------------------------
 
-	void savedScreenshotsFolderChanged (const QString &folder);
-	void savedCallsFolderChanged (const QString &folder);
-	void downloadFolderChanged (const QString &folder);
+    void savedScreenshotsFolderChanged (const QString &folder);
+    void savedCallsFolderChanged (const QString &folder);
+    void downloadFolderChanged (const QString &folder);
 
-	void remoteProvisioningChanged (const QString &remoteProvisioning);
-	void remoteProvisioningNotChanged (const QString &remoteProvisioning);
+    void remoteProvisioningChanged (const QString &remoteProvisioning);
+    void remoteProvisioningNotChanged (const QString &remoteProvisioning);
 
-	void exitOnCloseChanged (bool value);
+    void exitOnCloseChanged (bool value);
 
-	// Advanced. -----------------------------------------------------------------
+    // Advanced. -----------------------------------------------------------------
 
-	void logsFolderChanged (const QString &folder);
-	void logsUploadUrlChanged (const QString &url);
-	void logsEnabledChanged (bool status);
-	void logsEmailChanged (const QString &email);
-	
-	void contactImporterChanged();
+    void logsFolderChanged (const QString &folder);
+    void logsUploadUrlChanged (const QString &url);
+    void logsEnabledChanged (bool status);
+    void logsEmailChanged (const QString &email);
 
-	bool developerSettingsEnabledChanged (bool status);
+    void contactImporterChanged();
 
-	bool isInCallChanged(bool);
+    bool developerSettingsEnabledChanged (bool status);
+
+    bool isInCallChanged(bool);
 
 private:
 	int mCurrentSettingsTab = 0;

@@ -74,7 +74,7 @@ EventCountNotifier::~EventCountNotifier () {
 }
 
 void EventCountNotifier::notifyEventCount (int n) {
-  QSystemTrayIcon *sysTrayIcon = App::getInstance()->getSystemTrayIcon();
+  QSystemTrayIcon *sysTrayIcon = nullptr;
   if (!sysTrayIcon)
     return;
 
@@ -114,7 +114,7 @@ void EventCountNotifier::notifyEventCount (int n) {
 }
 
 void EventCountNotifier::update () {
-  QSystemTrayIcon *sysTrayIcon = App::getInstance()->getSystemTrayIcon();
+  QSystemTrayIcon *sysTrayIcon = nullptr;
   if(sysTrayIcon)
     sysTrayIcon->setIcon(QIcon(mDisplayCounter ? *mBufWithCounter : *mBuf));
   mDisplayCounter = !mDisplayCounter;

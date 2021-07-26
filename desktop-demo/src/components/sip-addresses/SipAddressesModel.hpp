@@ -94,9 +94,6 @@ private:
 
   // ---------------------------------------------------------------------------
 
-  void handleChatModelCreated (const std::shared_ptr<ChatModel> &chatModel);
-  void handleHistoryModelCreated (HistoryModel *historyModel) ;
-
   void handleContactAdded (ContactModel *contact);
   void handleContactRemoved (const ContactModel *contact);
 
@@ -106,13 +103,6 @@ private:
   void handleMessageReceived (const std::shared_ptr<linphone::ChatMessage> &message);
   void handleCallStateChanged (const std::shared_ptr<linphone::Call> &call, linphone::Call::State state);
   void handlePresenceReceived (const QString &sipAddress, const std::shared_ptr<const linphone::PresenceModel> &presenceModel);
-
-  void handleAllEntriesRemoved (ChatModel *chatModel);
-  void handleLastEntryRemoved (ChatModel *chatModel);
-  
-  void handleMessageCountReset (ChatModel *chatModel);
-
-  void handleMessageSent (const std::shared_ptr<linphone::ChatMessage> &message);
 
   void handleIsComposingChanged (const std::shared_ptr<linphone::ChatRoom> &chatRoom);
 

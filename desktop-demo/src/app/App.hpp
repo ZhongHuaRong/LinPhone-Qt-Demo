@@ -22,15 +22,14 @@
 #define APP_H_
 
 #include <memory>
-
-#include "single-application/SingleApplication.hpp"
+#include <QApplication>
+#include <QDebug>
 
 // =============================================================================
 
 class QCommandLineParser;
 class QQmlApplicationEngine;
 class QQuickWindow;
-class QSystemTrayIcon;
 
 namespace linphone {
   class Config;
@@ -40,15 +39,12 @@ class Colors;
 class DefaultTranslator;
 class Notifier;
 
-class App : public SingleApplication {
+class App : public QApplication {
   Q_OBJECT;
 
   Q_PROPERTY(QString configLocale READ getConfigLocale WRITE setConfigLocale NOTIFY configLocaleChanged);
   Q_PROPERTY(QString locale READ getLocale CONSTANT);
   Q_PROPERTY(QVariantList availableLocales READ getAvailableLocales CONSTANT);
-  Q_PROPERTY(QString qtVersion READ getQtVersion CONSTANT);
-
-  Q_PROPERTY(bool autoStart READ getAutoStart WRITE setAutoStart NOTIFY autoStartChanged);
 
 public:
   App (int &argc, char *argv[]);
@@ -74,14 +70,6 @@ public:
     return mNotifier;
   }
 
-  Colors *getColors () const {
-    return mColors;
-  }
-
-  QSystemTrayIcon *getSystemTrayIcon () const {
-    return mSystemTrayIcon;
-  }
-
   QQuickWindow *getMainWindow () const;
 
   bool hasFocus () const;
@@ -105,13 +93,8 @@ public:
 
   Q_INVOKABLE static void smartShowWindow (QQuickWindow *window);
 
-public slots:
-  void stateChanged(Qt::ApplicationState);
-
 signals:
   void configLocaleChanged (const QString &locale);
-
-  void autoStartChanged (bool enabled);
 
   void opened (bool status);
 
@@ -123,7 +106,6 @@ private:
   void registerToolTypes ();
   void registerSharedToolTypes ();
 
-  void setTrayIcon ();
   void createNotifier ();
 
   void initLocale (const std::shared_ptr<linphone::Config> &config);
@@ -137,12 +119,6 @@ private:
     return mAvailableLocales;
   }
 
-  bool getAutoStart () const {
-    return mAutoStart;
-  }
-
-  void setAutoStart (bool enabled);
-
   void openAppAfterInit (bool mustBeIconified = false);
 
   void setOpened (bool status) {
@@ -151,17 +127,8 @@ private:
       emit opened(mIsOpened);
     }
   }
-  static QString getStrippedApplicationVersion();// x.y.z but if 'z-*' then x.y.z-1
-  static void checkForUpdate ();
-
-  static QString getQtVersion () {
-    return qVersion();
-  }
-
   QVariantList mAvailableLocales;
   QString mLocale;
-
-  bool mAutoStart = false;
 
   QCommandLineParser *mParser = nullptr;
 
@@ -175,8 +142,6 @@ private:
   QQuickWindow *mSettingsWindow = nullptr;
 
   Colors *mColors = nullptr;
-
-  QSystemTrayIcon *mSystemTrayIcon = nullptr;
 
   bool mIsOpened = false;
 };

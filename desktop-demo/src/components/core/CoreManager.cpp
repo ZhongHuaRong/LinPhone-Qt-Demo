@@ -29,11 +29,9 @@
 
 #include "app/paths/Paths.hpp"
 #include "components/calls/CallsListModel.hpp"
-#include "components/chat/ChatModel.hpp"
 #include "components/contact/VcardModel.hpp"
 #include "components/contacts/ContactsListModel.hpp"
 #include "components/contacts/ContactsImporterListModel.hpp"
-#include "components/history/HistoryModel.hpp"
 #include "components/ldap/LdapListModel.hpp"
 #include "components/settings/AccountSettingsModel.hpp"
 #include "components/settings/SettingsModel.hpp"
@@ -41,16 +39,8 @@
 
 #include "utils/Utils.hpp"
 
-#if defined(Q_OS_MACOS)
-  #include "event-count-notifier/EventCountNotifierMacOs.hpp"
-#else
-  #include "event-count-notifier/EventCountNotifierSystemTrayIcon.hpp"
-#endif // if defined(Q_OS_MACOS)
-
 #include "CoreHandlers.hpp"
 #include "CoreManager.hpp"
-#include <linphone/core.h>
-
 #include <linphone/core.h>
 
 // =============================================================================
@@ -104,11 +94,8 @@ void CoreManager::initCoreManager(){
 	mAccountSettingsModel = new AccountSettingsModel(this);
 	mLdapListModel = new LdapListModel(this);
 	mSettingsModel = new SettingsModel(this);
-	mSipAddressesModel = new SipAddressesModel(this);
-	mEventCountNotifier = new EventCountNotifier(this);
-	mEventCountNotifier->updateUnreadMessageCount();
-	QObject::connect(mEventCountNotifier, &EventCountNotifier::eventCountChanged,this, &CoreManager::eventCountChanged);
-	migrate();
+    mSipAddressesModel = new SipAddressesModel(this);
+    migrate();
 	mStarted = true;
 
 	qInfo() << QStringLiteral("CoreManager initialized");
@@ -116,54 +103,6 @@ void CoreManager::initCoreManager(){
 }
 CoreManager *CoreManager::getInstance (){
    return mInstance;
- }
-
-shared_ptr<ChatModel> CoreManager::getChatModel (const QString &peerAddress, const QString &localAddress) {
-  if (peerAddress.isEmpty() || localAddress.isEmpty())
-    return nullptr;
-
-  // Create a new chat model.
-  QPair<QString, QString> chatModelId{ peerAddress, localAddress };
-  if (!mChatModels.contains(chatModelId)) {
-    if (
-      !mCore->createAddress(peerAddress.toStdString()) ||
-      !mCore->createAddress(localAddress.toStdString())
-    ) {
-      qWarning() << QStringLiteral("Unable to get chat model from invalid chat model id: (%1, %2).")
-        .arg(peerAddress).arg(localAddress);
-      return nullptr;
-    }
-
-    auto deleter = [this, chatModelId](ChatModel *chatModel) {
-      bool removed = mChatModels.remove(chatModelId);
-      Q_ASSERT(removed);
-      delete chatModel;
-    };
-
-    shared_ptr<ChatModel> chatModel(new ChatModel(peerAddress, localAddress), deleter);
-    mChatModels[chatModelId] = chatModel;
-
-    emit chatModelCreated(chatModel);
-
-    return chatModel;
-  }
-
-  // Returns an existing chat model.
-  shared_ptr<ChatModel> chatModel = mChatModels[chatModelId].lock();
-  Q_CHECK_PTR(chatModel);
-  return chatModel;
-}
-
-bool CoreManager::chatModelExists (const QString &peerAddress, const QString &localAddress) {
-  return mChatModels.contains({ peerAddress, localAddress });
-}
-
-HistoryModel* CoreManager::getHistoryModel(){
-  if(!mHistoryModel){
-    mHistoryModel = new HistoryModel(this);
-    emit historyModelCreated(mHistoryModel);
-  }
-  return mHistoryModel;
 }
 // -----------------------------------------------------------------------------
 
@@ -273,8 +212,8 @@ void CoreManager::createLinphoneCore (const QString &configPath) {
   setResourcesPaths();
   
   mCore = linphone::Factory::get()->createCore(
-    Paths::getConfigFilePath(configPath),
-    Paths::getFactoryConfigFilePath(),
+    Utils::appStringToCoreString(configPath),
+    Utils::appStringToCoreString(configPath),
     nullptr
   );
   mCore->addListener(mHandlers);
@@ -335,17 +274,6 @@ QString CoreManager::getVersion () const {
   return Utils::coreStringToAppString(mCore->getVersion());
 }
 
-// -----------------------------------------------------------------------------
-
-int CoreManager::getEventCount () const {
-  return mEventCountNotifier ? mEventCountNotifier->getEventCount() : 0;
-}
-int CoreManager::getMissedCallCount(const QString &peerAddress, const QString &localAddress)const{
-	return mEventCountNotifier ? mEventCountNotifier->getMissedCallCount(peerAddress, localAddress) : 0;
-}
-int CoreManager::getMissedCallCountFromLocal( const QString &localAddress)const{
-	return mEventCountNotifier ? mEventCountNotifier->getMissedCallCountFromLocal(localAddress) : 0;
-}
 
 // -----------------------------------------------------------------------------
 
@@ -386,10 +314,6 @@ void CoreManager::handleLogsUploadStateChanged (linphone::Core::LogCollectionUpl
 }
 
 // -----------------------------------------------------------------------------
-
-QString CoreManager::getDownloadUrl () {
-  return DownloadUrl;
-}
 
 void CoreManager::setLastRemoteProvisioningState(const linphone::ConfiguringState& state){
 	mLastRemoteProvisioningState = state;

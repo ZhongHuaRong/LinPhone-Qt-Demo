@@ -189,24 +189,6 @@ Window {
         id: chat
 
         Chat {
-          proxyModel: ChatProxyModel {
-            Component.onCompleted: {
-              if (!SettingsModel.chatEnabled) {
-                setEntryTypeFilter(ChatModel.CallEntry)
-              }
-            }
-
-            peerAddress: (call?call.peerAddress:'')
-            localAddress: (call?call.localAddress:'')
-            fullPeerAddress: (call?call.fullPeerAddress:peerAddress)
-            fullLocalAddress: (call?call.fullLocalAddress:localAddress)
-
-          }
-
-          Connections {
-            target: SettingsModel
-            onChatEnabledChanged: proxyModel.setEntryTypeFilter(status ? ChatModel.GenericEntry : ChatModel.CallEntry)
-          }
         }
       }
 
@@ -231,16 +213,6 @@ Window {
         sourceComponent: window.call && window.call.peerAddress && window.call.localAddress ? chat : null
       }
     }
-  }
 
-  // ---------------------------------------------------------------------------
-  // Handle transfer.
-  // Handle count changed. Not on proxy model!!!
-  // ---------------------------------------------------------------------------
-
-  Connections {
-    target: CallsListModel
-    onCallTransferAsked: Logic.handleCallTransferAsked(callModel)
-    onRowsRemoved: Logic.tryToCloseWindow()
   }
 }

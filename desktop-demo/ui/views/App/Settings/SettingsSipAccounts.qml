@@ -16,50 +16,6 @@ TabContainer {
     width: parent.width
 
     // -------------------------------------------------------------------------
-    // Default identity.
-    // -------------------------------------------------------------------------
-
-    Form {
-      title: qsTr('defaultIdentityTitle')
-      width: parent.width
-
-      FormLine {
-        FormGroup {
-          label: qsTr('defaultDisplayNameLabel')
-
-          TextField {
-            text: AccountSettingsModel.primaryDisplayName
-
-            onEditingFinished: AccountSettingsModel.primaryDisplayName = text
-          }
-        }
-      }
-
-      FormLine {
-        FormGroup {
-          label: qsTr('defaultUsernameLabel')
-
-          TextField {
-            text: AccountSettingsModel.primaryUsername
-
-            onEditingFinished: AccountSettingsModel.primaryUsername = text
-          }
-        }
-      }
-
-      FormLine {
-        FormGroup {
-          label: qsTr('defaultSipAddressLabel')
-
-          TextField {
-            readOnly: true
-            text: AccountSettingsModel.primarySipAddress
-          }
-        }
-      }
-    }
-
-    // -------------------------------------------------------------------------
     // Proxy accounts.
     // -------------------------------------------------------------------------
 

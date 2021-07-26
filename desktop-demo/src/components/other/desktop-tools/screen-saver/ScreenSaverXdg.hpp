@@ -18,23 +18,27 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_PROVIDER_H_
-#define IMAGE_PROVIDER_H_
+#ifndef SCREEN_SAVER_XDG_H_
+#define SCREEN_SAVER_XDG_H_
 
-#include <QQuickImageProvider>
-#include <QDebug>
-#include "components/other/colors/Colors.hpp"
+#include <QTimer>
 
 // =============================================================================
 
-class ImageProvider : public QQuickImageProvider {
+class ScreenSaverXdg : public QObject {
+  Q_OBJECT;
+
 public:
-  ImageProvider ();
+  ScreenSaverXdg (QObject *parent = Q_NULLPTR);
 
-  QImage requestImage (const QString &id, QSize *size, const QSize &requestedSize) override;
-  QPixmap requestPixmap (const QString &id, QSize *size, const QSize &requestedSize) override;
+  bool getScreenSaverStatus () const;
+  void setScreenSaverStatus (bool status);
 
-  static const QString ProviderId;
+signals:
+  void screenSaverStatusChanged (bool status);
+
+private:
+  QTimer mTimer;
 };
 
-#endif // IMAGE_PROVIDER_H_
+#endif // SCREEN_SAVER_XDG_H_

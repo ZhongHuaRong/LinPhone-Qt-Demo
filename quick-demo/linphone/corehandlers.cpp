@@ -1,38 +1,18 @@
-/*
- * Copyright (c) 2010-2020 Belledonne Communications SARL.
- *
- * This file is part of linphone-desktop
- * (see https://www.linphone.org).
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include <QMutex>
 #include <QtDebug>
 #include <QThread>
 #include <QTimer>
 
-#include "app/App.hpp"
-#include "components/call/CallModel.hpp"
-#include "components/contact/ContactModel.hpp"
-#include "components/notifier/Notifier.hpp"
-#include "components/settings/AccountSettingsModel.hpp"
-#include "components/settings/SettingsModel.hpp"
-#include "utils/Utils.hpp"
+//#include "app/App.hpp"
+//#include "components/call/CallModel.hpp"
+//#include "components/contact/ContactModel.hpp"
+//#include "components/notifier/Notifier.hpp"
+//#include "components/settings/AccountSettingsModel.hpp"
+//#include "components/settings/SettingsModel.hpp"
+//#include "utils/Utils.hpp"
 
-#include "CoreHandlers.hpp"
-#include "CoreManager.hpp"
+#include "corehandlers.h"
+#include "linphonecoremanager.h"
 
 // =============================================================================
 
@@ -40,7 +20,7 @@ using namespace std;
 
 // -----------------------------------------------------------------------------
 
-CoreHandlers::CoreHandlers (CoreManager *coreManager) {
+CoreHandlers::CoreHandlers (LinphoneCoreManager *coreManager) {
     Q_UNUSED(coreManager)
 }
 
@@ -66,7 +46,6 @@ void CoreHandlers::onCallEncryptionChanged (
   bool,
   const string &
 ) {
-    qInfo() << "onCallEncryptionChanged" << Utils::coreStringToAppString(call->getDiversionAddress()->asString());
   emit callEncryptionChanged(call);
 }
 
@@ -76,17 +55,7 @@ void CoreHandlers::onCallStateChanged (
   linphone::Call::State state,
   const string &
 ) {
-    qInfo() << "onCallStateChanged" << Utils::coreStringToAppString(call->getDiversionAddress()->asString());
   emit callStateChanged(call, state);
-
-  SettingsModel *settingsModel = CoreManager::getInstance()->getSettingsModel();
-  if (
-    call->getState() == linphone::Call::State::IncomingReceived && (
-      !settingsModel->getAutoAnswerStatus() ||
-      settingsModel->getAutoAnswerDelay() > 0
-    )
-  )
-    App::getInstance()->getNotifier()->notifyReceivedCall(call);
 }
 
 void CoreHandlers::onCallStatsUpdated (
@@ -94,13 +63,11 @@ void CoreHandlers::onCallStatsUpdated (
   const shared_ptr<linphone::Call> &call,
   const shared_ptr<const linphone::CallStats> &stats
 ) {
-    qInfo() << "onCallStatsUpdated" << Utils::coreStringToAppString(call->getDiversionAddress()->asString());
-  call->getData<CallModel>("call-model").updateStats(stats);
+//  call->getData<CallModel>("call-model").updateStats(stats);
 }
 
 void CoreHandlers::onCallCreated(const shared_ptr<linphone::Core> &,
-				  const shared_ptr<linphone::Call> &call) {
-    qInfo() << "onCallCreated" << Utils::coreStringToAppString(call->getDiversionAddress()->asString());
+                  const shared_ptr<linphone::Call> &call) {
   emit callCreated(call);
 }
 
@@ -111,8 +78,8 @@ void CoreHandlers::onConfiguringStatus(
   Q_UNUSED(core)
   emit setLastRemoteProvisioningState(status);
   if(status == linphone::ConfiguringState::Failed){
-	  qWarning() << "Remote provisioning has failed and was removed : "<< QString::fromStdString(message);
-	  core->setProvisioningUri("");
+      qWarning() << "Remote provisioning has failed and was removed : "<< QString::fromStdString(message);
+      core->setProvisioningUri("");
   }
 }
 
@@ -122,7 +89,7 @@ void CoreHandlers::onDtmfReceived(
     int dtmf) {
     Q_UNUSED(lc)
     Q_UNUSED(call)
-    CoreManager::getInstance()->getCore()->playDtmf((char)dtmf, CallModel::DtmfSoundDelay);
+//    CoreManager::getInstance()->getCore()->playDtmf((char)dtmf, CallModel::DtmfSoundDelay);
 }
 void CoreHandlers::onGlobalStateChanged (
   const shared_ptr<linphone::Core> &core,
@@ -213,7 +180,7 @@ void CoreHandlers::onNotifyPresenceReceivedForUriOrTel (
   const string &uriOrTel,
   const shared_ptr<const linphone::PresenceModel> &presenceModel
 ) {
-  emit presenceReceived(Utils::coreStringToAppString(uriOrTel), presenceModel);
+//  emit presenceReceived(Utils::coreStringToAppString(uriOrTel), presenceModel);
 }
 
 void CoreHandlers::onNotifyPresenceReceived (
@@ -221,8 +188,8 @@ void CoreHandlers::onNotifyPresenceReceived (
   const shared_ptr<linphone::Friend> &linphoneFriend
 ) {
   // Ignore friend without vcard because the `contact-model` data doesn't exist.
-  if (linphoneFriend->getVcard() && linphoneFriend->dataExists("contact-model"))
-    linphoneFriend->getData<ContactModel>("contact-model").refreshPresence();
+//  if (linphoneFriend->getVcard() && linphoneFriend->dataExists("contact-model"))
+//    linphoneFriend->getData<ContactModel>("contact-model").refreshPresence();
 }
 
 void CoreHandlers::onRegistrationStateChanged (
@@ -290,11 +257,11 @@ void CoreHandlers::onVersionUpdateCheckResultReceived (
   const string &version,
   const string &url
 ) {
-  if (result == linphone::VersionUpdateCheckResult::NewVersionAvailable)
-    App::getInstance()->getNotifier()->notifyNewVersionAvailable(
-      Utils::coreStringToAppString(version),
-      Utils::coreStringToAppString(url)
-    );
+//  if (result == linphone::VersionUpdateCheckResult::NewVersionAvailable)
+//    App::getInstance()->getNotifier()->notifyNewVersionAvailable(
+//      Utils::coreStringToAppString(version),
+//      Utils::coreStringToAppString(url)
+//    );
 }
 void CoreHandlers::onEcCalibrationResult(
     const std::shared_ptr<linphone::Core> &,

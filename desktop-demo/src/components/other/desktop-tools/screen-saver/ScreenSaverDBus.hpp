@@ -18,23 +18,33 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGE_PROVIDER_H_
-#define IMAGE_PROVIDER_H_
+#ifndef SCREEN_SAVER_DBUS_H_
+#define SCREEN_SAVER_DBUS_H_
 
-#include <QQuickImageProvider>
-#include <QDebug>
-#include "components/other/colors/Colors.hpp"
+#include <QDBusInterface>
 
 // =============================================================================
 
-class ImageProvider : public QQuickImageProvider {
+class QDBusPendingCallWatcher;
+
+class ScreenSaverDBus : public QObject {
+  Q_OBJECT;
+
 public:
-  ImageProvider ();
+  ScreenSaverDBus (QObject *parent = Q_NULLPTR);
+  ~ScreenSaverDBus ();
 
-  QImage requestImage (const QString &id, QSize *size, const QSize &requestedSize) override;
-  QPixmap requestPixmap (const QString &id, QSize *size, const QSize &requestedSize) override;
+  bool getScreenSaverStatus () const;
+  void setScreenSaverStatus (bool status);
 
-  static const QString ProviderId;
+signals:
+  void screenSaverStatusChanged (bool status);
+
+private:
+  bool mScreenSaverStatus = true;
+
+  QDBusInterface mBus;
+  uint32_t mToken;
 };
 
-#endif // IMAGE_PROVIDER_H_
+#endif // SCREEN_SAVER_DBUS_H_

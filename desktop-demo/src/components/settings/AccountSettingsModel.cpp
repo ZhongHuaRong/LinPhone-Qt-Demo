@@ -60,7 +60,6 @@ AccountSettingsModel::AccountSettingsModel (QObject *parent) : QObject(parent) {
     coreManager->getHandlers().get(), &CoreHandlers::registrationStateChanged,
     this, &AccountSettingsModel::handleRegistrationStateChanged
   );
-  QObject::connect(coreManager, &CoreManager::eventCountChanged, this, [this]() { emit accountSettingsUpdated(); });
 }
 
 // -----------------------------------------------------------------------------
@@ -402,7 +401,7 @@ QVariantList AccountSettingsModel::getAccounts () const {
     account["sipAddress"] = Utils::coreStringToAppString(core->createPrimaryContactParsed()->asStringUriOnly());
     account["fullSipAddress"] = QString::fromStdString(core->createPrimaryContactParsed()->asString());
     account["unreadMessageCount"] = core->getUnreadChatMessageCountFromLocal(core->createPrimaryContactParsed());
-    account["missedCallCount"] = CoreManager::getInstance()->getMissedCallCountFromLocal(account["sipAddress"].toString());
+    account["missedCallCount"] = 0;
     account["proxyConfig"].setValue(nullptr);
     accounts << account;
   }
@@ -413,7 +412,7 @@ QVariantList AccountSettingsModel::getAccounts () const {
     account["fullSipAddress"] = QString::fromStdString(proxyConfig->getIdentityAddress()->asString());
     account["proxyConfig"].setValue(proxyConfig);
     account["unreadMessageCount"] = proxyConfig->getUnreadChatMessageCount();
-    account["missedCallCount"] = CoreManager::getInstance()->getMissedCallCountFromLocal(account["sipAddress"].toString());
+    account["missedCallCount"] = 0;
     accounts << account;
   }
 
