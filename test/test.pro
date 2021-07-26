@@ -13,42 +13,26 @@ SOURCES +=  tst_configtest.cpp
 INCLUDEPATH +=  $$PWD/../sdk/linphone-sdk/desktop/include \
 				$$PWD/../
 
-LIBS +=  -L$$PWD/../sdk/linphone-sdk/desktop/lib/ -lzlib \
-				 -lxml2 \
-				 -lliblinphone++ \
-				 -lliblinphone \
-				 -lbctoolbox \
-				 -lortp \
-				 -lmediastreamer \
-				 -lbelcard \
+LIBS +=  -L$$PWD/../sdk/linphone-sdk/desktop/lib/ -lz \
+                                 -lxml2 \
+                                 -llinphone++ \
+                                 -llinphone \
+                                 -lbctoolbox \
+                                 -lortp \
+                                 -lmediastreamer \
 				 -lbelr \
-				 -lsqlite3 \
-				 -lavcodec \
-				 -lavutil \
-				 -lbctoolbox-tester \
-				 -lbcunit \
+                                 -lsqlite3 \
 				 -lbellesip \
 				 -lbv16 \
-				 -lbzrtp \
-				 -ldecaf \
-				 -lgcc \
-				 -lgsm \
-				 -llime \
+                                 -lbzrtp \
 				 -lmbedcrypto \
 				 -lmbedtls \
-				 -lmbedx509 \
-				 -lmingwex \
-				 -lopenh264_dll \
+                                 -lmbedx509 \
+                                 -lopenh264 \
 				 -lopus \
-				 -lortp \
-				 -lsoci_core_4_0 \
-				 -lsoci_sqlite3_4_0 \
+                                 -lortp \
 				 -lspeex \
 				 -lspeexdsp \
-				 -lsrtp2 \
-				 -lswresample \
-				 -lswscale \
-				 -lturbojpeg-static \
-				 -lxerces-c \
-				 -ladvapi32 \
-				 -lUser32
+                                 -lsrtp2 \
+                                 -lturbojpeg\
+                                 -lvpx

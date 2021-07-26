@@ -16,15 +16,11 @@ DEFINES += WIN32_LEAN_AND_MEAN
 SOURCES += \
         main.cpp \
         src/app/App.cpp \
-        src/app/AppController.cpp \
-        src/app/cli/Cli.cpp \
-        src/app/logger/Logger.cpp \
         src/app/paths/Paths.cpp \
         src/app/providers/AvatarProvider.cpp \
         src/app/providers/ExternalImageProvider.cpp \
         src/app/providers/ImageProvider.cpp \
         src/app/providers/ThumbnailProvider.cpp \
-        src/app/single-application/SingleApplication.cpp \
         src/app/translator/DefaultTranslator.cpp \
         src/components/assistant/AssistantModel.cpp \
         src/components/authentication/AuthenticationNotifier.cpp \
@@ -33,8 +29,6 @@ SOURCES += \
         src/components/calls/CallsListProxyModel.cpp \
         src/components/camera/Camera.cpp \
         src/components/camera/CameraPreview.cpp \
-        src/components/chat/ChatModel.cpp \
-        src/components/chat/ChatProxyModel.cpp \
         src/components/codecs/AbstractCodecsModel.cpp \
         src/components/codecs/AudioCodecsModel.cpp \
         src/components/codecs/VideoCodecsModel.cpp \
@@ -51,19 +45,14 @@ SOURCES += \
         src/components/contacts/ContactsListProxyModel.cpp \
         src/components/core/CoreHandlers.cpp \
         src/components/core/CoreManager.cpp \
-        src/components/core/event-count-notifier/AbstractEventCountNotifier.cpp \
-        src/components/core/event-count-notifier/EventCountNotifierSystemTrayIcon.cpp \
         src/components/file/FileDownloader.cpp \
         src/components/file/FileExtractor.cpp \
-        src/components/history/HistoryModel.cpp \
-        src/components/history/HistoryProxyModel.cpp \
         src/components/ldap/LdapListModel.cpp \
         src/components/ldap/LdapModel.cpp \
         src/components/ldap/LdapProxyModel.cpp \
         src/components/notifier/Notifier.cpp \
         src/components/other/clipboard/Clipboard.cpp \
         src/components/other/colors/Colors.cpp \
-        src/components/other/desktop-tools/DesktopToolsWindows.cpp \
         src/components/other/text-to-speech/TextToSpeech.cpp \
         src/components/other/units/Units.cpp \
         src/components/presence/OwnPresenceModel.cpp \
@@ -86,10 +75,13 @@ SOURCES += \
         src/utils/plugins/LinphonePlugin.cpp \
         src/utils/plugins/PluginDataAPI.cpp \
         src/utils/plugins/PluginNetworkHelper.cpp \
-        src/utils/plugins/PluginsManager.cpp
+        src/utils/plugins/PluginsManager.cpp \
+    src/components/other/desktop-tools/screen-saver/ScreenSaverDBus.cpp \
+    src/components/other/desktop-tools/screen-saver/ScreenSaverXdg.cpp \
+    src/components/other/desktop-tools/DesktopToolsLinux.cpp
 
 INCLUDEPATH +=  $$PWD/src \
-                $$PWD/../sdk/linphone-sdk/desktop/include \
+                $$PWD/sdk/linux/linphone-sdk/desktop/include \
 				$$PWD/../
 
 RESOURCES += resources.qrc
@@ -110,16 +102,11 @@ HEADERS += \
 	include/LinphoneApp/PluginDataAPI.hpp \
 	include/LinphoneApp/PluginNetworkHelper.hpp \
 	src/app/App.hpp \
-	src/app/AppController.hpp \
-	src/app/cli/Cli.hpp \
-	src/app/logger/Logger.hpp \
 	src/app/paths/Paths.hpp \
 	src/app/providers/AvatarProvider.hpp \
 	src/app/providers/ExternalImageProvider.hpp \
 	src/app/providers/ImageProvider.hpp \
 	src/app/providers/ThumbnailProvider.hpp \
-	src/app/single-application/SingleApplication.hpp \
-	src/app/single-application/SingleApplicationPrivate.hpp \
 	src/app/translator/DefaultTranslator.hpp \
 	src/components/assistant/AssistantModel.hpp \
 	src/components/authentication/AuthenticationNotifier.hpp \
@@ -128,8 +115,6 @@ HEADERS += \
 	src/components/calls/CallsListProxyModel.hpp \
 	src/components/camera/Camera.hpp \
 	src/components/camera/CameraPreview.hpp \
-	src/components/chat/ChatModel.hpp \
-	src/components/chat/ChatProxyModel.hpp \
 	src/components/codecs/AbstractCodecsModel.hpp \
 	src/components/codecs/AudioCodecsModel.hpp \
 	src/components/codecs/VideoCodecsModel.hpp \
@@ -146,13 +131,8 @@ HEADERS += \
 	src/components/contacts/ContactsListProxyModel.hpp \
 	src/components/core/CoreHandlers.hpp \
 	src/components/core/CoreManager.hpp \
-	src/components/core/event-count-notifier/AbstractEventCountNotifier.hpp \
-	src/components/core/event-count-notifier/EventCountNotifierMacOs.hpp \
-	src/components/core/event-count-notifier/EventCountNotifierSystemTrayIcon.hpp \
 	src/components/file/FileDownloader.hpp \
 	src/components/file/FileExtractor.hpp \
-	src/components/history/HistoryModel.hpp \
-	src/components/history/HistoryProxyModel.hpp \
 	src/components/ldap/LdapListModel.hpp \
 	src/components/ldap/LdapModel.hpp \
 	src/components/ldap/LdapProxyModel.hpp \
@@ -160,7 +140,6 @@ HEADERS += \
 	src/components/other/clipboard/Clipboard.hpp \
 	src/components/other/colors/Colors.hpp \
 	src/components/other/desktop-tools/DesktopTools.hpp \
-	src/components/other/desktop-tools/DesktopToolsWindows.hpp \
 	src/components/other/text-to-speech/TextToSpeech.hpp \
 	src/components/other/units/Units.hpp \
 	src/components/presence/OwnPresenceModel.hpp \
@@ -180,19 +159,40 @@ HEADERS += \
 	src/utils/MediastreamerUtils.hpp \
 	src/utils/QExifImageHeader.hpp \
 	src/utils/Utils.hpp \
-	src/utils/plugins/PluginsManager.hpp
+	src/utils/plugins/PluginsManager.hpp \
+    src/components/other/desktop-tools/DesktopToolsLinux.hpp \
+    src/components/other/desktop-tools/screen-saver/ScreenSaverDBus.hpp \
+    src/components/other/desktop-tools/screen-saver/ScreenSaverXdg.hpp
 
-win32: LIBS +=  -L$$PWD/../sdk/linphone-sdk/desktop/lib/ -lzlib \
-				 -lxml2 \
-				 -lliblinphone++ \
-				 -lliblinphone \
-				 -lbctoolbox \
-				 -lortp \
-				 -lmediastreamer \
-				 -lbelcard \
-				 -lbelr \
-				-ladvapi32 \
-				-lUser32
+LIBS +=  -L$$PWD/sdk/linux/linphone-sdk/desktop/lib/ -lz \
+                                 -lxml2 \
+                                 -llinphone++ \
+                                 -llinphone \
+                                 -lbctoolbox \
+                                 -lortp \
+                                 -lmediastreamer \
+                                 -lbelr \
+                                 -lsqlite3 \
+                                 -lbellesip \
+                                 -lbv16 \
+                                 -lbzrtp \
+                                 -lmbedcrypto \
+                                 -lmbedtls \
+                                 -lmbedx509 \
+                                 -lopenh264 \
+                                 -lopus \
+                                 -lortp \
+                                 -lspeex \
+                                 -lspeexdsp \
+                                 -lsrtp2 \
+                                 -lturbojpeg\
+                                 -lvpx \
+                                 -lbelcard \
+                                 -lavcodec \
+                                 -lavutil \
+                                 -lswscale \
+                                 -llime \
+                                 -lgsm
 
 TRANSLATIONS += assets\languages\en.ts \
 				assets\languages\zh_CN.ts
