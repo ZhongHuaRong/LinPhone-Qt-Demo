@@ -6,7 +6,7 @@ import an.qt.im 1.0
 
 Window {
     visible: true
-    width: 960
+    width: 1000
     height: 720
     title: qsTr("Hello World")
 
@@ -28,14 +28,14 @@ Window {
 
             Button {
                 id: button4
-                text: qsTr("update")
+                text: qsTr("insert")
                 onClicked: {
                     core.accountSettings.addSipAccount({
                                                            sipAddress: textField.text,
                                                            serverAddress: "<sip:112.17.116.160:7898;transport=tcp>",
                                                            transport: "TCP",
                                                            password:"Qd2344"
-                                                         })
+                                                       })
                 }
             }
 
@@ -97,10 +97,79 @@ Window {
             }
         }
 
-        Text{
-            id:infoText
-            Layout.fillHeight: true
+        RowLayout {
+            id: rowLayout
+            spacing: 50
             Layout.fillWidth: true
+
+            Button {
+                id: button5
+                text: qsTr("enable video")
+                checkable: true
+                onClicked: core.callcore.enableCamera(button5.checked)
+
+            }
+
+            Button {
+                id: button6
+                text: qsTr("screenshot")
+                onClicked: core.callcore.takeSnapshot()
+            }
+
+            Button{
+                id:button7
+                text:qsTr("show video")
+                onClicked: {
+                    loader1.active = true
+                    loader2.active = true
+                }
+            }
+
+            Button{
+                id:button8
+                text:qsTr("hide video")
+                onClicked: {
+                    loader1.active = false
+                    loader2.active = false
+                }
+            }
         }
+
+        Rectangle{
+            width: 1000
+            height: 500
+            color: "#000000"
+            Loader{
+                id:loader1
+                x:0
+                y:0
+                width: 500
+                height: 500
+                sourceComponent:camera
+                active:false
+            }
+            Loader{
+                id:loader2
+                x:500
+                y:0
+                width: 500
+                height: 500
+                sourceComponent:camera
+                active:false
+                onLoaded: item.isPreview = true
+            }
+        }
+
+
+        Component{
+            id:camera
+
+            Camera{
+                width: 300
+                height: 300
+            }
+
+        }
+
     }
 }

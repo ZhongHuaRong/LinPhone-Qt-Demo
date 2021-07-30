@@ -2,7 +2,11 @@
 #include "linphonecoremanager.h"
 #include "utils.h"
 #include "corehandlers.h"
+#include <QDateTime>
 #include <QDebug>
+#include <QGuiApplication>
+#include <QRegularExpression>
+#include <linphone++/call.hh>
 
 using namespace std;
 
@@ -81,6 +85,52 @@ int CallCore::getRunningCallsNumber () const {
     return LinphoneCoreManager::getInstance()->getCore()->getCallsNb();
 }
 
+void CallCore::takeSnapshot()
+{
+    auto call = LinphoneCoreManager::getInstance()->getCall();
+    if(!call)
+        return;
+
+    static QString oldName;
+    QString newName(generateSavedFilename().append(".jpg"));
+
+    if (newName == oldName) {
+        qWarning() << QStringLiteral("Unable to take snapshot. Wait one second.");
+        return;
+    }
+    oldName = newName;
+
+    qInfo() << QStringLiteral("Take snapshot of call:") << this;
+
+    const QString filePath(qApp->applicationDirPath() + "/screenshot/" + newName);
+    qInfo() << filePath;
+    call->takeVideoSnapshot(Utils::appStringToCoreString(filePath));
+}
+
+void CallCore::enableCamera(bool enabled)
+{
+    auto call = LinphoneCoreManager::getInstance()->getCall();
+    if(!call)
+        return;
+    shared_ptr<linphone::Core> core = LinphoneCoreManager::getInstance()->getCore();
+    if (!core->videoSupported()) {
+        qWarning() << QStringLiteral("Unable to update video call property. (Video not supported.)");
+        return;
+    }
+
+    switch (call->getState()) {
+    case linphone::Call::State::Connected:
+    case linphone::Call::State::StreamsRunning:
+        break;
+    default: return;
+    }
+
+    shared_ptr<linphone::CallParams> params = core->createCallParams(call);
+    params->enableVideo(enabled);
+
+    call->update(params);
+}
+
 void CallCore::terminateAllCalls () const {
     LinphoneCoreManager::getInstance()->getCore()->terminateAllCalls();
 }
@@ -128,6 +178,7 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
     case linphone::Call::State::OutgoingInit:
 //        addCall(call);
         qInfo() << "OutgoingInit";
+        LinphoneCoreManager::getInstance()->setCall(call);
         break;
 
     case linphone::Call::State::End:
@@ -146,4 +197,27 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
     default:
         break;
     }
+}
+
+QString CallCore::generateSavedFilename() const
+{
+    const shared_ptr<linphone::CallLog> callLog(LinphoneCoreManager::getInstance()->getCall()->getCallLog());
+    return generateSavedFilename(
+                QString::fromStdString(callLog->getFromAddress()->getUsername()),
+                QString::fromStdString(callLog->getToAddress()->getUsername())
+                );
+}
+
+QString CallCore::generateSavedFilename(const QString &from, const QString &to)
+{
+    auto escape = [](const QString &str) {
+        constexpr char ReservedCharacters[] = "<>:\"/\\|\\?\\*";
+        static QRegularExpression regexp(ReservedCharacters);
+        return QString(str).replace(regexp, "");
+    };
+
+    return QStringLiteral("%1_%2_%3")
+            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss"))
+            .arg(escape(from))
+            .arg(escape(to));
 }

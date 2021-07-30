@@ -19,6 +19,9 @@ public:
 
     Q_INVOKABLE int getRunningCallsNumber () const;
 
+    Q_INVOKABLE void takeSnapshot ();
+    Q_INVOKABLE void enableCamera(bool enabled);
+
     Q_INVOKABLE void terminateAllCalls () const;
     Q_INVOKABLE void terminateCall (const QString& sipAddress) const;
 
@@ -26,6 +29,9 @@ public:
     Q_INVOKABLE void callTerminate();
 private slots:
     void handleCallStateChanged (const std::shared_ptr<linphone::Call> &call, linphone::Call::State state);
+private:
+    QString generateSavedFilename () const;
+    static QString generateSavedFilename (const QString &from, const QString &to);
 };
 
 #endif // CALLCORE_H

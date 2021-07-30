@@ -2,8 +2,13 @@
 #include "utils.h"
 #include <QCoreApplication>
 #include <QDebug>
+#include <QLibrary>
 #include <QQmlEngine>
-
+#include "camera.h"
+#include <linphone++/config.hh>
+#include <linphone++/core.hh>
+#include <linphone++/factory.hh>
+#include <linphone++/payload_type.hh>
 
 LinphoneCoreManager *LinphoneCoreManager::mInstance{nullptr};
 
@@ -21,6 +26,7 @@ LinphoneCoreManager::LinphoneCoreManager(QObject *parent, const QString &configP
     qmlRegisterType<LinphoneSettings>("an.qt.im", 1, 0, "LinphoneSettings");
     qmlRegisterType<AccountSettings>("an.qt.im", 1, 0, "AccountSettings");
     qmlRegisterType<CallCore>("an.qt.im", 1, 0, "CallCore");
+    qmlRegisterType<Camera>("an.qt.im", 1, 0, "Camera");
 
     mCore = nullptr;
     CoreHandlers *coreHandlers = mHandlers.get();
@@ -82,6 +88,11 @@ void LinphoneCoreManager::iterate () {
 void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
   qInfo() << QStringLiteral("Launch async core creation.");
 
+
+  std::shared_ptr<linphone::Factory> factory = linphone::Factory::get();
+  qInfo() << qApp->applicationDirPath();
+  factory->setMspluginsDir(Utils::appStringToCoreString(qApp->applicationDirPath()));
+//  factory->setTopResourcesDir(Paths::getPackageDataDirPath());
   // Migration of configuration and database files from GTK version of Linphone.
 
   mCore = linphone::Factory::get()->createCore(
@@ -90,9 +101,30 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
     nullptr
   );
   mCore->addListener(mHandlers);
+  qInfo() << Utils::coreStringToAppString(mCore->getDefaultVideoDisplayFilter());
+  auto codecs = mCore->getVideoPayloadTypes();
+  for(auto codec:codecs){
+      QVariantMap map;
+
+      map["bitrate"] = codec->getNormalBitrate();
+      map["channels"] = codec->getChannels();
+      map["clockRate"] = codec->getClockRate();
+      map["description"] = Utils::coreStringToAppString(codec->getDescription());
+      map["enabled"] = codec->enabled();
+      map["encoderDescription"] = Utils::coreStringToAppString(codec->getEncoderDescription());
+      map["isUsable"] = codec->isUsable(); // TODO: Notify in UI when unusable.
+      map["isVbr"] = codec->isVbr();
+      map["mime"] = Utils::coreStringToAppString(codec->getMimeType());
+      map["number"] = codec->getNumber();
+      map["recvFmtp"] = Utils::coreStringToAppString(codec->getRecvFmtp());
+      qInfo() << map;
+  }
+  codecs.push_back(codecs.front());
+  codecs.pop_front();
+  mCore->setVideoPayloadTypes(codecs);
   mCore->setVideoDisplayFilter("MSQOGL");
   mCore->usePreviewWindow(true);
-  mCore->enableVideoPreview(false);
+  mCore->enableVideoPreview(true);
   mCore->setUserAgent(
     Utils::appStringToCoreString(
       QStringLiteral("demo Desktop/%1 (%2, Qt %3) LinphoneCore")
@@ -110,8 +142,8 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
     config->setInt("video", "capture", 1);
     config->setInt("video", "display", 1);
   }
+
   mCore->start();
-  mCore->enableFriendListSubscription(true);
 }
 
 // -----------------------------------------------------------------------------

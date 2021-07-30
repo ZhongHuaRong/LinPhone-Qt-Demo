@@ -1,4 +1,4 @@
-QT += quick
+QT += quick widgets
 CONFIG += c++11
 DESTDIR = ../Debug
 
@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     linphone/mediastreamerutils.cpp \
     linphone/utils.cpp \
     linphone/callcore.cpp \
-    linphone/accountsettings.cpp
+    linphone/accountsettings.cpp \
+    linphone/camera.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,28 +40,27 @@ INCLUDEPATH +=  $$PWD/src \
                 $$PWD/sdk/linux/linphone-sdk/desktop/include \
 
 LIBS +=  -L$$PWD/sdk/linux/linphone-sdk/desktop/lib/ -lz \
-                                 -lxml2 \
-                                 -llinphone++ \
-                                 -llinphone \
                                  -lbctoolbox \
-                                 -lortp \
-                                 -lmediastreamer \
-                                 -lbelr \
-                                 -lsqlite3 \
                                  -lbellesip \
-                                 -lbv16 \
+                                 -lbelr \
                                  -lbzrtp \
+                                 -llinphone \
+                                 -llinphone++ \
                                  -lmbedcrypto \
                                  -lmbedtls \
                                  -lmbedx509 \
+                                 -lmediastreamer \
                                  -lopenh264 \
                                  -lopus \
                                  -lortp \
                                  -lspeex \
                                  -lspeexdsp \
+                                 -lsqlite3 \
                                  -lsrtp2 \
-                                 -lturbojpeg\
-                                 -lvpx
+                                 -lvpx \
+                                 -lxml2 \
+                                 -lturbojpeg \
+         -L$$PWD/sdk/linux/linphone-sdk/desktop/lib/mediastreamer/plugins
 
 HEADERS += \
     linphone/linphonecoremanager.h \
@@ -69,4 +69,5 @@ HEADERS += \
     linphone/mediastreamerutils.h \
     linphone/utils.h \
     linphone/callcore.h \
-    linphone/accountsettings.h
+    linphone/accountsettings.h \
+    linphone/camera.h

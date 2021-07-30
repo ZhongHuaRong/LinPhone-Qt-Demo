@@ -18,6 +18,7 @@ class LinphoneCoreManager : public QObject
     Q_PROPERTY(AccountSettings* accountSettings READ getAccountSettingsModel CONSTANT)
     Q_PROPERTY(CallCore* callcore READ getCallCore CONSTANT)
     Q_PROPERTY(std::shared_ptr<linphone::Call> call READ getCall NOTIFY callChanged)
+    Q_PROPERTY(bool running READ running NOTIFY runningChanged)
 public:
     LinphoneCoreManager (){}
     ~LinphoneCoreManager ();
@@ -49,6 +50,7 @@ public:
 
     inline void setCall(std::shared_ptr<linphone::Call> c) {
         currentCall = c;
+        setRunning(c?true:false);
         emit callChanged();
     }
 
@@ -69,14 +71,30 @@ public:
 
     static void init (QObject *parent, const QString &configPath);
     static void uninit ();
+    bool running() const
+    {
+        return m_running;
+    }
+
 public slots:
     void initCoreManager();
     void startIterate();
     void stopIterate();
     void createLinphoneCore (const QString &configPath);// In order to delay creation
+    void setRunning(bool running)
+    {
+        if (m_running == running)
+            return;
+
+        m_running = running;
+        emit runningChanged(m_running);
+    }
+
 signals:
     void coreManagerInitialized ();
     void callChanged();
+    void runningChanged(bool running);
+
 private:
   LinphoneCoreManager (QObject *parent, const QString &configPath);
   void iterate ();
@@ -96,6 +114,7 @@ private:
     QMutex mMutexVideoRender;
 
     static LinphoneCoreManager *mInstance;
+    bool m_running{false};
 };
 
 #endif // LINPHONECOREMANAGER_H

@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "linphone/linphonecoremanager.h"
@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 //    QApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     LinphoneCoreManager::init(nullptr,app.applicationDirPath() + "/info");
 
