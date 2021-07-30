@@ -11,7 +11,8 @@ sdk编译步骤和问题记录在[这里](./doc/build.md)
       - [demo组件说明](#demo组件说明)
       - [流程图](#流程图)
         - [core初始化流程图](#core初始化流程图)
-        - [linphone整体流程](#linphone整体流程)
+        - [音视频拨出流程](#音视频拨出流程)
+        - [音视频拨进流程](#音视频拨进流程)
 
 ## 项目说明
 ### desktop-demo
@@ -51,5 +52,8 @@ sdk编译步骤和问题记录在[这里](./doc/build.md)
 ##### core初始化流程图
 ![](linphone-core-init-system-flowchart.drawio.svg)
 
-##### linphone整体流程
-![](./doc/linphone-system-flowchart.drawio.png)
+##### 音视频拨出流程
+![](./doc/call-out-uml.drawio.png)
+
+##### 音视频拨进流程
+![](./doc/call-in-uml.drawio.png)
