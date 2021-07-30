@@ -41,7 +41,7 @@ sdk编译步骤和问题记录在[这里](./doc/build.md)
 | Camera            | 用于在qml中显示对方视频或者自己摄像头画面,需要注意的是,只有当通话状态为接通时,才可以实例化该类,否则会异常退出.还要注意需要先删除该对象才可以退出通话,否则也会异常退出
 | SafeFramebuffer   | 用于在Camera找不到渲染器时,生成的空白渲染器让Camera正常运行
 | CoreHandlers      | 继承CoreListener,用于监听Core的各种回调,目前主要关注core状态和call状态,core状态用于激活linphone事件循环计时器,call状态用于记录拨出,拨进和停止通话等情况
-| LinphoneCoreManager| 核心管理器,提供对象给qml使用和core初始化操作
+| LinphoneCoreManager| 核心管理器,提供对象给qml使用和core初始化操作,如果使用了Qt GL,则需要注意ms2的plugin动态库加载路径,需要在core创建前设置
 | LinphoneSettings   | 官方demo中的设置类,目前我用不上(没研究过),只是简单移植过来
 | MediastreamerUtils | 也是官方demo中的类,用于采集音频,代码未作改动
 | Utils              | 目前用于转换linphone和qt的字符串编码,只用的上coreStringToAppString和appStringToCoreString
