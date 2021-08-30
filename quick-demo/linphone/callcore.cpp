@@ -1,4 +1,4 @@
-#include "callcore.h"
+﻿#include "callcore.h"
 #include "linphonecoremanager.h"
 #include "utils.h"
 #include "corehandlers.h"
@@ -9,6 +9,40 @@
 #include <linphone++/call.hh>
 
 using namespace std;
+
+static inline CallCore::CallState mapLinphoneCallStateToUi (linphone::Call::State state) {
+    switch (state) {
+    case linphone::Call::State::End:
+    case linphone::Call::State::Released:
+    case linphone::Call::State::Error:
+        return CallCore::CallStateEnd;
+    case linphone::Call::State::StreamsRunning:
+    case linphone::Call::State::Connected:
+    case linphone::Call::State::IncomingReceived:
+    case linphone::Call::State::PushIncomingReceived:
+    case linphone::Call::State::Updating:
+        return CallCore::CallStateRunning;
+    case linphone::Call::State::PausedByRemote:
+    case linphone::Call::State::Paused:
+    case linphone::Call::State::Pausing:
+        return CallCore::CallStatePausing;
+    case linphone::Call::State::Idle:
+    case linphone::Call::State::EarlyUpdating:
+    case linphone::Call::State::EarlyUpdatedByRemote:
+    case linphone::Call::State::IncomingEarlyMedia:
+    case linphone::Call::State::UpdatedByRemote:
+    case linphone::Call::State::Referred:
+    case linphone::Call::State::OutgoingEarlyMedia:
+    case linphone::Call::State::OutgoingRinging:
+    case linphone::Call::State::OutgoingProgress:
+    case linphone::Call::State::OutgoingInit:
+    case linphone::Call::State::Resuming:
+        return CallCore::CallStateReadying;
+    }
+
+    return CallCore::CallStateUnknown;
+}
+
 
 CallCore::CallCore(QObject *parent) : QObject(parent)
 {
@@ -57,7 +91,7 @@ void CallCore::launchAudioCall (const QString &sipAddress, const QHash<QString, 
             });
         }
     }else
-        core->inviteAddressWithParams(address, params);
+    core->inviteAddressWithParams(address, params);
 }
 
 void CallCore::launchVideoCall (const QString &sipAddress) const {
@@ -81,14 +115,9 @@ void CallCore::launchVideoCall (const QString &sipAddress) const {
 
 // -----------------------------------------------------------------------------
 
-int CallCore::getRunningCallsNumber () const {
-    return LinphoneCoreManager::getInstance()->getCore()->getCallsNb();
-}
-
 void CallCore::takeSnapshot()
 {
-    auto call = LinphoneCoreManager::getInstance()->getCall();
-    if(!call)
+    if(!currentCall)
         return;
 
     static QString oldName;
@@ -104,31 +133,31 @@ void CallCore::takeSnapshot()
 
     const QString filePath(qApp->applicationDirPath() + "/screenshot/" + newName);
     qInfo() << filePath;
-    call->takeVideoSnapshot(Utils::appStringToCoreString(filePath));
+    currentCall->takeVideoSnapshot(Utils::appStringToCoreString(filePath));
 }
 
 void CallCore::enableCamera(bool enabled)
 {
-    auto call = LinphoneCoreManager::getInstance()->getCall();
-    if(!call)
+    if(!currentCall || currentCall->cameraEnabled() == enabled)
         return;
+
     shared_ptr<linphone::Core> core = LinphoneCoreManager::getInstance()->getCore();
     if (!core->videoSupported()) {
         qWarning() << QStringLiteral("Unable to update video call property. (Video not supported.)");
         return;
     }
 
-    switch (call->getState()) {
+    switch (currentCall->getState()) {
     case linphone::Call::State::Connected:
     case linphone::Call::State::StreamsRunning:
         break;
     default: return;
     }
 
-    shared_ptr<linphone::CallParams> params = core->createCallParams(call);
+    shared_ptr<linphone::CallParams> params = core->createCallParams(currentCall);
     params->enableVideo(enabled);
 
-    call->update(params);
+    currentCall->update(params);
 }
 
 void CallCore::terminateAllCalls () const {
@@ -153,59 +182,131 @@ void CallCore::terminateCall (const QString& sipAddress) const{
 }
 
 void CallCore::callAccept(){
-    auto call = LinphoneCoreManager::getInstance()->getCall();
-    if(call)
-        call->accept();
+    if(currentCall)
+        currentCall->accept();
 }
 
 void CallCore::callTerminate(){
-    auto call = LinphoneCoreManager::getInstance()->getCall();
-    if(call)
-        call->terminate();
+    if(currentCall)
+        currentCall->terminate();
+}
+
+void CallCore::reloadCamera()
+{
+    LinphoneCoreManager::getInstance()->getCore()->reloadVideoDevices();
+    m_videoDevices.clear();
+    for (const auto &device : LinphoneCoreManager::getInstance()->getCore()->getVideoDevicesList())
+		m_videoDevices << Utils::coreStringToAppString(device);
+    setVideoDevice(m_videoDevice);
+    
+    emit videoDevicesChanged(m_videoDevices);
+}
+
+void CallCore::setCall(std::shared_ptr<linphone::Call> c)
+{
+    if(c == currentCall)
+        return;
+    currentCall = c;
+    setMicroMuted(c?c->getMicrophoneMuted():false);
+    setPlayerVolume(c?c->getSpeakerVolumeGain():0.f);
+	//在Call重置时需要重置状态值(只有调用reset重置状态时才会为空)
+    if(!c)
+        setCallState(CallState::CallStateUnknown);
+    emit callChanged();
+}
+
+void CallCore::setMicroMuted(bool microMuted)
+{
+    if (m_microMuted == microMuted)
+        return;
+
+    m_microMuted = microMuted;
+    if(currentCall)
+        currentCall->setMicrophoneMuted(microMuted);
+    emit microMutedChanged(m_microMuted);
 }
 
 void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &call, linphone::Call::State state)
 {
+    //    qInfo() << "call state:" << (int)state;
     switch (state) {
     case linphone::Call::State::IncomingReceived:
-//        addCall(call);
-//        joinConference(call);
         qInfo() << "IncomingReceived";
-//        callCreate(call);
-        LinphoneCoreManager::getInstance()->setCall(call);
+        setCall(call);
         break;
 
     case linphone::Call::State::OutgoingInit:
-//        addCall(call);
         qInfo() << "OutgoingInit";
-        LinphoneCoreManager::getInstance()->setCall(call);
+        setCall(call);
         break;
 
     case linphone::Call::State::End:
     case linphone::Call::State::Error:
-//        if (call->getCallLog()->getStatus() == linphone::Call::Status::Missed)
-//            emit callMissed(&call->getData<CallModel>("call-model"));
-//        removeCall(call);
+        qInfo() << (int)call->getCallLog()->getStatus();
+        qInfo() << (int)call->getCallLog()->getErrorInfo()->getReason();
+        qInfo() << QString::fromStdString(call->getCallLog()->getErrorInfo()->getWarnings());
         break;
 
     case linphone::Call::State::StreamsRunning:
     {
 //        int index = findCallIndex(mList, call);
 //        emit callRunning(index, &call->getData<CallModel>("call-model"));
+        break;
     }
-    break;
     default:
         break;
     }
+
+    if(call == currentCall){
+        qInfo() << "call state2:" << (int)state;
+        setCallState(mapLinphoneCallStateToUi(state));
+    }
+}
+
+void CallCore::dealCallChanged()
+{
+    if(!currentCall)
+        return;
+
+    qInfo() << "call " << QString::fromStdString(currentCall->getRemoteAddressAsString());
+    callAccept();
+}
+
+void CallCore::setVideoDevice(int videoDevice)
+{
+    if(videoDevice < 0 || videoDevice > m_videoDevices.count())
+        videoDevice = 0;
+    if(videoDevice < m_videoDevices.size()){
+        auto core = LinphoneCoreManager::getInstance()->getCore();
+        auto device = Utils::appStringToCoreString(m_videoDevices[videoDevice]);
+        if(device == core->getVideoDevice())
+                return;
+        LinphoneCoreManager::getInstance()->getCore()->setVideoDevice(device);
+    }
+    m_videoDevice = videoDevice;
+    emit videoDeviceChanged(m_videoDevice);
+}
+
+void CallCore::setPlayerVolume(float playerVolume)
+{
+    //    qWarning("Floating point comparison needs context sanity check");
+    if (qFuzzyCompare(m_playerVolume, playerVolume))
+        return;
+    
+    m_playerVolume = playerVolume;
+    if(currentCall)
+        currentCall->setSpeakerVolumeGain(playerVolume);
+    emit playerVolumeChanged(m_playerVolume);
 }
 
 QString CallCore::generateSavedFilename() const
 {
-    const shared_ptr<linphone::CallLog> callLog(LinphoneCoreManager::getInstance()->getCall()->getCallLog());
-    return generateSavedFilename(
-                QString::fromStdString(callLog->getFromAddress()->getUsername()),
-                QString::fromStdString(callLog->getToAddress()->getUsername())
-                );
+    //    const shared_ptr<linphone::CallLog> callLog(LinphoneCoreManager::getInstance()->getCall()->getCallLog());
+    //    return generateSavedFilename(
+    //                QString::fromStdString(callLog->getFromAddress()->getUsername()),
+    //                QString::fromStdString(callLog->getToAddress()->getUsername())
+    //             );
+    return QString();
 }
 
 QString CallCore::generateSavedFilename(const QString &from, const QString &to)

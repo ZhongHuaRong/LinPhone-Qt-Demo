@@ -1,4 +1,4 @@
-#include "linphonecoremanager.h"
+﻿#include "linphonecoremanager.h"
 #include "utils.h"
 #include <QCoreApplication>
 #include <QDebug>
@@ -23,7 +23,6 @@ LinphoneCoreManager::LinphoneCoreManager(QObject *parent, const QString &configP
 
     qRegisterMetaType<std::shared_ptr<linphone::ProxyConfig>>();
     qmlRegisterType<LinphoneCoreManager>("an.qt.im", 1, 0, "LinphoneCoreManager");
-    qmlRegisterType<LinphoneSettings>("an.qt.im", 1, 0, "LinphoneSettings");
     qmlRegisterType<AccountSettings>("an.qt.im", 1, 0, "AccountSettings");
     qmlRegisterType<CallCore>("an.qt.im", 1, 0, "CallCore");
     qmlRegisterType<Camera>("an.qt.im", 1, 0, "Camera");
@@ -33,10 +32,7 @@ LinphoneCoreManager::LinphoneCoreManager(QObject *parent, const QString &configP
     QObject::connect(coreHandlers, &CoreHandlers::coreStarting, this, &LinphoneCoreManager::startIterate, Qt::QueuedConnection);
     QObject::connect(coreHandlers, &CoreHandlers::coreStarted, this, &LinphoneCoreManager::initCoreManager, Qt::QueuedConnection);
     QObject::connect(coreHandlers, &CoreHandlers::coreStopped, this, &LinphoneCoreManager::stopIterate, Qt::QueuedConnection);
-//    QObject::connect(coreHandlers, &CoreHandlers::logsUploadStateChanged, this, &LinphoneCoreManager::handleLogsUploadStateChanged);
-    QTimer::singleShot(100, [this, configPath](){// Delay the creation in order to have the CoreManager instance set before
-        createLinphoneCore(configPath);
-    });
+	createLinphoneCore(configPath);
 }
 
 LinphoneCoreManager::~LinphoneCoreManager()
@@ -52,13 +48,6 @@ void LinphoneCoreManager::initCoreManager()
     callcore = new CallCore(this);
     qInfo() << QStringLiteral("CoreManager initialized");
     emit coreManagerInitialized();
-
-    qInfo() << "account settings";
-    auto accounts = accountSettings->getAccounts();
-    qInfo() << accounts;
-    if(!accounts.isEmpty()){
-        mCore->setDefaultProxyConfig(accounts.first().toMap().value("proxyConfig").value<std::shared_ptr<linphone::ProxyConfig>>());
-    }
 }
 
 void LinphoneCoreManager::startIterate()
@@ -90,9 +79,14 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
 
 
   std::shared_ptr<linphone::Factory> factory = linphone::Factory::get();
-  qInfo() << qApp->applicationDirPath();
-  factory->setMspluginsDir(Utils::appStringToCoreString(qApp->applicationDirPath()));
-//  factory->setTopResourcesDir(Paths::getPackageDataDirPath());
+//  qInfo() << qApp->applicationDirPath();
+//  qInfo() << QString::fromStdString(factory->getDataResourcesDir());
+//  qInfo() << QString::fromStdString(factory->getImageResourcesDir());
+//  qInfo() << QString::fromStdString(factory->getRingResourcesDir());
+//  qInfo() << QString::fromStdString(factory->getSoundResourcesDir());
+//  qInfo() << QString::fromStdString(factory->getTopResourcesDir());
+  factory->setMspluginsDir(Utils::appStringToCoreString(qApp->applicationDirPath() + "/plugins/mediastreamer"));
+  factory->setImageResourcesDir(Utils::appStringToCoreString(qApp->applicationDirPath() + "/images"));
   // Migration of configuration and database files from GTK version of Linphone.
 
   mCore = linphone::Factory::get()->createCore(
@@ -124,7 +118,7 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
   mCore->setVideoPayloadTypes(codecs);
   mCore->setVideoDisplayFilter("MSQOGL");
   mCore->usePreviewWindow(true);
-  mCore->enableVideoPreview(true);
+//  mCore->enableVideoPreview(true);
   mCore->setUserAgent(
     Utils::appStringToCoreString(
       QStringLiteral("demo Desktop/%1 (%2, Qt %3) LinphoneCore")
@@ -144,6 +138,13 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
   }
 
   mCore->start();
+}
+
+void LinphoneCoreManager::reset()
+{
+    accountSettings->removeProxyConfig();
+    callcore->terminateAllCalls();
+    callcore->setCall(nullptr);
 }
 
 // -----------------------------------------------------------------------------

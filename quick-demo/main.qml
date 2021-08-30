@@ -1,4 +1,4 @@
-import QtQuick 2.6
+﻿import QtQuick 2.6
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.2
@@ -109,31 +109,101 @@ Window {
                 onClicked: core.callcore.enableCamera(button5.checked)
 
             }
+			
+			Button {
+                id: button9
+                text: qsTr("microMuted")
+                checkable: true
+                onClicked: core.callcore.microMuted = button9.checked
+
+            }
 
             Button {
                 id: button6
                 text: qsTr("screenshot")
                 onClicked: core.callcore.takeSnapshot()
             }
-
-            Button{
-                id:button7
-                text:qsTr("show video")
-                onClicked: {
-                    loader1.active = true
-                    loader2.active = true
-                }
-            }
-
-            Button{
-                id:button8
-                text:qsTr("hide video")
-                onClicked: {
-                    loader1.active = false
-                    loader2.active = false
-                }
-            }
         }
+		
+		ColumnLayout{
+			RowLayout{
+				Text{
+					text:qsTr("call state:")
+				}
+				
+				
+				Text{
+					text:{
+						switch(core.callcore.callState){
+						case CallCore.CallStateUnknown:
+							return qsTr("未知状态")
+						case CallCore.CallStateReadying:
+							return qsTr("通话准备中(连接服务)")
+						case CallCore.CallStatePausing:
+							return qsTr("通话暂停")
+						case CallCore.CallStateRunning:
+							return qsTr("正在通话")
+						case CallCore.CallStateEnd:
+							return qsTr("通话结束")
+						}
+					}
+				}
+				
+				Text{
+					text: qsTr("playerVolume")
+				}
+				
+				Slider{
+					id:slider
+					from:0.0
+					to:1.0
+					onMoved: core.callcore.playerVolume = value
+					
+					Binding{
+						target: slider
+						property: "value"
+						when:!slider.pressed
+						value: core.callcore.playerVolume
+					}
+				}
+			}
+			
+			RowLayout{
+				Text{
+					text:qsTr("account state:")
+				}
+				
+				Text{
+					id:accountText
+					text:{
+						switch(core.accountSettings.registrationState){
+						case AccountSettings.RegistrationStateInProgress:
+							return qsTr("登陆中")
+						case AccountSettings.RegistrationStateRegistered:
+							return qsTr("已登录")
+						case AccountSettings.RegistrationStateNotRegistered:
+							return qsTr("未登录")
+						case AccountSettings.RegistrationStateNoProxy:
+							return qsTr("未设置账号")
+						default:
+							return "unknown"
+						}
+					}
+				}
+				
+				Text {
+					text: qsTr("camera")
+				}
+				
+				ComboBox{
+					model:core.callcore.videoDevices
+					onCurrentIndexChanged: core.callcore.videoDevice = currentIndex
+					
+					Component.onCompleted: core.callcore.reloadCamera()
+				}
+			}
+			
+		}
 
         Rectangle{
             width: 1000
@@ -146,7 +216,7 @@ Window {
                 width: 500
                 height: 500
                 sourceComponent:camera
-                active:false
+                active:core.callcore.callState == CallCore.CallStateRunning
             }
             Loader{
                 id:loader2
@@ -155,7 +225,7 @@ Window {
                 width: 500
                 height: 500
                 sourceComponent:camera
-                active:false
+                active:loader1.active
                 onLoaded: item.isPreview = true
             }
         }

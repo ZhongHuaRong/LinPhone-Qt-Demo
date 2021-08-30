@@ -1,4 +1,4 @@
-#ifndef PROXYUSER_H
+﻿#ifndef PROXYUSER_H
 #define PROXYUSER_H
 
 #include <linphone++/linphone.hh>
@@ -7,73 +7,50 @@
 #include <QVariantMap>
 #include <QVariantList>
 
+/**
+ * @brief The AccountSettings class
+ * 该类作用于账号设置相关的操作
+ */
 class AccountSettings: public QObject
 {
     Q_OBJECT
 public:
     // proxy config.
-    Q_PROPERTY(QString username READ getUsername WRITE setUsername NOTIFY accountSettingsUpdated)
-    Q_PROPERTY(QString sipAddress READ getUsedSipAddressAsStringUriOnly NOTIFY accountSettingsUpdated)
-    Q_PROPERTY(QString fullSipAddress READ getUsedSipAddressAsString)
     Q_PROPERTY(RegistrationState registrationState READ getRegistrationState NOTIFY accountSettingsUpdated)
 
     enum RegistrationState {
-      RegistrationStateRegistered,
-      RegistrationStateNotRegistered,
-      RegistrationStateInProgress,
-      RegistrationStateNoProxy,
+      RegistrationStateRegistered,				//已登录
+      RegistrationStateNotRegistered,			//未登录
+      RegistrationStateInProgress,				//正在登录
+      RegistrationStateNoProxy,					//未设置账号
     };
     Q_ENUMS(RegistrationState)
 public:
     explicit AccountSettings (QObject *parent = nullptr);
 
-
-    std::shared_ptr<const linphone::Address> getUsedSipAddress () const;
-    void setUsedSipAddress (const std::shared_ptr<const linphone::Address> &address);
-
-    QString getUsedSipAddressAsStringUriOnly () const;
-    QString getUsedSipAddressAsString () const;
-
-    bool addOrUpdateProxyConfig (const std::shared_ptr<linphone::ProxyConfig> &proxyConfig);
-
-    Q_INVOKABLE QVariantMap getProxyConfigDescription (const std::shared_ptr<linphone::ProxyConfig> &proxyConfig);
-
-    Q_INVOKABLE void setDefaultProxyConfig (const std::shared_ptr<linphone::ProxyConfig> &proxyConfig = nullptr);
-    Q_INVOKABLE void setDefaultProxyConfigFromSipAddress (const QString &sipAddress);
-
+	/**
+	 * @brief addSipAccount
+	 * 添加一个Sip账号
+	 * @param data			账号相关信息
+	 * sipAddress: 自己地址,
+	 * serverAddress: 服务地址,
+	 * transport: 协议,"TCP",
+	 * password:密码
+	 */
     Q_INVOKABLE void addSipAccount(const QVariantMap &data);
-    Q_INVOKABLE bool addOrUpdateProxyConfig (const std::shared_ptr<linphone::ProxyConfig> &proxyConfig, const QVariantMap &data);
-    Q_INVOKABLE void removeProxyConfig (const std::shared_ptr<linphone::ProxyConfig> &proxyConfig);
-
-    Q_INVOKABLE std::shared_ptr<linphone::ProxyConfig> createProxyConfig ();
-
-    Q_INVOKABLE void addAuthInfo (
-      const std::shared_ptr<linphone::AuthInfo> &authInfo,
-      const QString &password,
-      const QString &userId
-    );
-
-    Q_INVOKABLE void eraseAllPasswords ();
+	
+	/**
+	 * @brief removeProxyConfig
+	 * 移除所有账号信息
+	 * @note 每次重新登录时,都会自动登录上次关闭时的状态,需要调用该接口移除所有账号
+	 */
+    Q_INVOKABLE void removeProxyConfig ();
 
   signals:
     void accountSettingsUpdated ();
-    void publishPresenceChanged();
 
   private:
-    QString getUsername () const;
-    void setUsername (const QString &username);
-
     RegistrationState getRegistrationState () const;
-
-    // ---------------------------------------------------------------------------
-
-    QString getPrimaryUsername () const;
-    void setPrimaryUsername (const QString &username);
-
-    QString getPrimaryDisplayName () const;
-    void setPrimaryDisplayName (const QString &displayName);
-
-    QString getPrimarySipAddress () const;
 
     // ---------------------------------------------------------------------------
 

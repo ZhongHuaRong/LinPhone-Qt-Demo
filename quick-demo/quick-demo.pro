@@ -16,8 +16,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     linphone/linphonecoremanager.cpp \
     linphone/corehandlers.cpp \
-    linphone/linphonesettings.cpp \
-    linphone/mediastreamerutils.cpp \
     linphone/utils.cpp \
     linphone/callcore.cpp \
     linphone/accountsettings.cpp \
@@ -36,6 +34,36 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+win32{
+INCLUDEPATH +=  $$PWD/src \
+                $$PWD/sdk/win32/linphone-sdk/desktop/include \
+
+LIBS +=  -L$$PWD/sdk/win32/linphone-sdk/desktop/lib/ -lzlibd \
+								 -lbcmatroska2 \
+                                 -lbctoolbox \
+                                 -lbellesip \
+                                 -lbelr \
+                                 -lbzrtp \
+                                 -lliblinphone \
+                                 -lliblinphone++ \
+                                 -lmbedcrypto \
+                                 -lmbedtls \
+                                 -lmbedx509 \
+                                 -lmediastreamer \
+                                 -lopenh264_dll \
+                                 -lopus \
+                                 -lortp \
+                                 -lspeex \
+                                 -lspeexdsp \
+                                 -lsqlite3 \
+                                 -lsrtp2 \
+								 -lvpxmd \
+                                 -lxml2 \
+                                 -lturbojpeg-static
+         -L$$PWD/sdk/win32/linphone-sdk/desktop/lib/mediastreamer/plugins
+}
+
+unix:!mac{
 INCLUDEPATH +=  $$PWD/src \
                 $$PWD/sdk/linux/linphone-sdk/desktop/include \
 
@@ -61,13 +89,14 @@ LIBS +=  -L$$PWD/sdk/linux/linphone-sdk/desktop/lib/ -lz \
                                  -lxml2 \
                                  -lturbojpeg \
          -L$$PWD/sdk/linux/linphone-sdk/desktop/lib/mediastreamer/plugins
+}
+
 
 HEADERS += \
     linphone/linphonecoremanager.h \
     linphone/corehandlers.h \
-    linphone/linphonesettings.h \
-    linphone/mediastreamerutils.h \
     linphone/utils.h \
     linphone/callcore.h \
     linphone/accountsettings.h \
-    linphone/camera.h
+    linphone/camera.h \
+	config.h

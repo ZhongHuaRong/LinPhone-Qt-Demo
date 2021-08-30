@@ -1,3 +1,4 @@
+﻿#include "config.h"
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -14,6 +15,12 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     auto rootContext = engine.rootContext();
     rootContext->setContextProperty("core", LinphoneCoreManager::getInstance());
+	
+	QEventLoop eventloop;
+	QObject::connect(LinphoneCoreManager::getInstance(),&LinphoneCoreManager::coreManagerInitialized,
+					 &eventloop, &QEventLoop::quit);
+	eventloop.exec();
+	
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

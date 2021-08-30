@@ -3,7 +3,6 @@
 #include <QQuickWindow>
 #include <QThread>
 #include <QTimer>
-#include <QWidget>
 #include "linphone/linphonecoremanager.h"
 #include <linphone++/core.hh>
 
@@ -39,7 +38,7 @@ QQuickFramebufferObject::Renderer *Camera::createRenderer () const {
         LinphoneCoreManager::getInstance()->getCore()->setNativePreviewWindowId(NULL);// Reset
         renderer=(QQuickFramebufferObject::Renderer *)LinphoneCoreManager::getInstance()->getCore()->getNativePreviewWindowId();
     }else{
-        auto call = LinphoneCoreManager::getInstance()->getCall();
+        auto call = LinphoneCoreManager::getInstance()->getCallCore()->getCall();
         if(call){
             call->setNativeVideoWindowId(NULL);
             renderer=(QQuickFramebufferObject::Renderer *) call->getNativeVideoWindowId();

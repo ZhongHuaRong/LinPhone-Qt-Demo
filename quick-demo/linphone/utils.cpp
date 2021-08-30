@@ -1,4 +1,4 @@
-#include "utils.h"
+﻿#include "utils.h"
 
 #include <QFileInfo>
 #include <QCoreApplication>
@@ -29,17 +29,6 @@ char *Utils::rstrstr (const char *a, const char *b) {
 }
 
 // -----------------------------------------------------------------------------
-QImage Utils::getImage(const QString &pUri) {
-    QImage image(pUri);
-    if(image.isNull()){// Try to determine format from headers instead of using suffix
-        QImageReader reader(pUri);
-        reader.setDecideFormatFromContent(true);
-        QByteArray format = reader.format();
-        if(!format.isEmpty())
-            image = QImage(pUri, format);
-    }
-    return image;
-}
 QString Utils::getSafeFilePath (const QString &filePath, bool *soFarSoGood) {
   if (soFarSoGood)
     *soFarSoGood = true;
@@ -92,57 +81,7 @@ QString Utils::cleanSipAddress (const QString &sipAddress) {
   }
   return sipAddress;
 }
-// Data to retrieve WIN32 process
-#ifdef _WIN32
-#include <windows.h>
-struct EnumData {
-    DWORD dwProcessId;
-    HWND hWnd;
-};
-// Application-defined callback for EnumWindows
-BOOL CALLBACK EnumProc(HWND hWnd, LPARAM lParam) {
-// Retrieve storage location for communication data
-  EnumData& ed = *(EnumData*)lParam;
-  DWORD dwProcessId = 0x0;
-// Query process ID for hWnd
-  GetWindowThreadProcessId(hWnd, &dwProcessId);
-// Apply filter - if you want to implement additional restrictions,
-// this is the place to do so.
-  if (ed.dwProcessId == dwProcessId) {
-    // Found a window matching the process ID
-    ed.hWnd = hWnd;
-    // Report success
-    SetLastError(ERROR_SUCCESS);
-    // Stop enumeration
-    return FALSE;
-  }
-// Continue enumeration
-  return TRUE;
-}
-// Main entry
-HWND FindWindowFromProcessId(DWORD dwProcessId) {
-    EnumData ed = { dwProcessId };
-    if (!EnumWindows(EnumProc, (LPARAM)&ed) &&
-        (GetLastError() == ERROR_SUCCESS)) {
-        return ed.hWnd;
-    }
-    return NULL;
-}
 
-// Helper method for convenience
-HWND FindWindowFromProcess(HANDLE hProcess) {
-    return FindWindowFromProcessId(GetProcessId(hProcess));
-}
-#endif
-
-bool Utils::processExists(const quint64& p_processId)
-{
-#ifdef _WIN32
-    return FindWindowFromProcessId(p_processId) != NULL;
-#else
-    return true;
-#endif
-}
 QString Utils::getCountryName(const QLocale::Country& p_country)
 {
     QString countryName;
