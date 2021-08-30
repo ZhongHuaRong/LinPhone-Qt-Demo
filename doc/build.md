@@ -18,6 +18,8 @@
     - [linphone的相关错误](#linphone的相关错误)
   - [Linux](#linux)
     - [QT GL](#qt-gl)
+    - [Gcc 5.4环境下编译问题](#gcc-54环境下编译问题)
+    - [arm64编译时的错误](#arm64编译时的错误)
 
 ## 准备工作
 仓库地址[linphone-sdk](https://github.com/BelledonneCommunications/linphone-sdk)  
@@ -183,7 +185,10 @@ export LIB="C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10586.0\um\x86;C:\Pr
 >        * 这个比较麻烦,是因为cmake无法找到gcc和mingw的路径,添加这两个路径即可,CMakeLists文件在linphone/src
 >        * set(LIBGCC c:/msys64/usr/bin)
 >        * set(LIBMINGWEX c:/msys64)
->    * 还有一个doxygen路径错误的问题,简单点就是直接把linphone-doc项目去掉即可,不管他也没什么问题
+>    * 还有一个doxygen路径错误的问题
+>        * 这个问题需要注意,sdk需要linphone++头文件,这一步正是动态生成头文件的,不可以略过
+>        * 切记不可以用pacman安装doxygen,也就是mingw64源里的doxygen,会生成失败,哎,踩坑
+>        * 去官网下载最新版[doxygen 64bit](https://www.doxygen.nl/download.html)
 
 ####
 在所有步骤完成后,编译INSTALL项目即可
@@ -195,3 +200,30 @@ export LIB="C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10586.0\um\x86;C:\Pr
 
 ### QT GL
 在Linux环境下添加qt gl需要注意qt路径,参考Windows下的[ms2库编译](#ms2编译的相关错误)
+
+### Gcc 5.4环境下编译问题
+> 由于GCC版本的问题,可能有一些语法相关的问题
+>   * CMake Error at CMakeLists.txt:309 (if):  
+>       if given arguments:  
+>         "GLEW_VERSION_MAJOR" "LESS_EQUAL" "1" "AND" "GLEW_VERSION_MINOR" "LESS_EQUAL" "11"  
+>       Unknown arguments specified  
+>   直接去CMakeLists.txt把这段判断注释即可(记得装libglew-dev)
+>   * error: expected ‘,’ or ‘...’ before ‘&&’ token  
+>     * 进到bctoolbox,打开include里面的bctoolbox的logging.h文件
+>     * 定位到出错的行,将参数中的&&改为&
+>   * error: use of ‘crypto’ before deduction of ‘auto’  
+>     * 将参数名改一下即可  
+>   
+### arm64编译时的错误
+>    * /external/opus/celt/cpu_support.h:65:24: error: static declaration of ‘opus_select_arch’ follows non-static declaration
+>      * 将该处的函数定义注释
+>    * vpx构建失败的问题,可以参考Windows的构建步骤
+>       * 经过检查,发现他的构建脚本带上了--target=x86_64-linux-gcc,构建成x86的了
+>       * 找到vpx.cmake(linphone-sdk/cmake-builder/builders)
+>       * 找到这一段代码set(USE_TARGET YES),改为NO即可
+>    *  unresolvable R_AARCH64_ADR_PREL_PG_HI21 relocation against symbol `__stack_chk_guard@@GLIBC_2.17'
+>       * 这个是ffmpeg构建时的参数问题导致的构建失败
+>       * 找到ffmpeg.cmake(linphone-sdk/cmake-builder/builders)
+>       * 在lcb_configure_options中,在--extra-cflags和--extra-cxxflags后面添加-fPIC
+
+
