@@ -9,6 +9,10 @@ Window {
     width: 1000
     height: 720
     title: qsTr("Hello World")
+	
+	function getTargetAddress(){
+		return "sip:%2@%1".arg(serverID.text).arg(textField1.text)
+	}
 
     ColumnLayout {
         id: column
@@ -22,19 +26,34 @@ Window {
 
             TextField {
                 id: textField
-                text: "\"1110\" <sip:1110@112.17.116.160:7898>"
+				selectByMouse : true
+                text: "1110"
                 Layout.fillWidth: true
             }
+			
+			TextField{
+				id:serverID
+				selectByMouse: true
+				text: "112.17.116.160:7898"
+				Layout.fillWidth: true
+			}
+			
+			TextField{
+				id:passW
+				selectByMouse: true
+				text: "Qd2344"
+				Layout.fillWidth: true
+			}
 
             Button {
                 id: button4
                 text: qsTr("insert")
                 onClicked: {
                     core.accountSettings.addSipAccount({
-                                                           sipAddress: textField.text,
-                                                           serverAddress: "<sip:112.17.116.160:7898;transport=tcp>",
+                                                           sipAddress: "\"%2\" <sip:%2@%1>".arg(serverID.text).arg(textField.text),
+                                                           serverAddress: "<sip:%1;transport=tcp>".arg(serverID.text),
                                                            transport: "TCP",
-                                                           password:"Qd2344"
+                                                           password:passW.text
                                                        })
                 }
             }
@@ -49,7 +68,8 @@ Window {
         TextField {
             id: textField1
             Layout.fillWidth: true
-            text: qsTr("sip:1111@112.17.116.160:7898")
+			selectByMouse : true
+            text: "1111"
         }
 
         RowLayout{
@@ -77,7 +97,7 @@ Window {
                 x: 324
                 y: 122
                 text: qsTr("audio call")
-                onClicked: core.callcore.launchAudioCall(textField1.text)
+                onClicked: core.callcore.launchAudioCall(getTargetAddress())
             }
 
             Button {
@@ -85,7 +105,7 @@ Window {
                 x: 324
                 y: 122
                 text: qsTr("video call")
-                onClicked: core.callcore.launchVideoCall(textField1.text)
+                onClicked: core.callcore.launchVideoCall(getTargetAddress())
             }
 
             Button {
