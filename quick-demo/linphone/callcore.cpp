@@ -193,13 +193,34 @@ void CallCore::callTerminate(){
 
 void CallCore::reloadCamera()
 {
-    LinphoneCoreManager::getInstance()->getCore()->reloadVideoDevices();
+	auto core = LinphoneCoreManager::getInstance()->getCore();
+    core->reloadVideoDevices();
     m_videoDevices.clear();
-    for (const auto &device : LinphoneCoreManager::getInstance()->getCore()->getVideoDevicesList())
+    for (const auto &device : core->getVideoDevicesList())
 		m_videoDevices << Utils::coreStringToAppString(device);
     setVideoDevice(m_videoDevice);
     
-    emit videoDevicesChanged(m_videoDevices);
+	emit videoDevicesChanged(m_videoDevices);
+}
+
+void CallCore::reloadSoundDevice()
+{
+	auto core = LinphoneCoreManager::getInstance()->getCore();
+	core->reloadSoundDevices();
+	m_playbackDevices.clear();
+	for (const auto &device : core->getSoundDevicesList()) {
+		if (core->soundDeviceCanPlayback(device)) {
+			m_playbackDevices << Utils::coreStringToAppString(device);
+		}
+	}
+	setPlaybackDevice(m_playbackDevice);
+	
+	emit playbackDevicesChanged(m_playbackDevices);
+}
+
+void CallCore::reloadPlayerVolume()
+{
+	setPlayerVolume(currentCall?currentCall->getSpeakerVolumeGain():0.f);
 }
 
 void CallCore::setCall(std::shared_ptr<linphone::Call> c)
@@ -208,7 +229,7 @@ void CallCore::setCall(std::shared_ptr<linphone::Call> c)
         return;
     currentCall = c;
     setMicroMuted(c?c->getMicrophoneMuted():false);
-    setPlayerVolume(c?c->getSpeakerVolumeGain():0.f);
+    reloadPlayerVolume();
 	//在Call重置时需要重置状态值(只有调用reset重置状态时才会为空)
     if(!c)
         setCallState(CallState::CallStateUnknown);
@@ -274,17 +295,42 @@ void CallCore::dealCallChanged()
 
 void CallCore::setVideoDevice(int videoDevice)
 {
-    if(videoDevice < 0 || videoDevice > m_videoDevices.count())
+    if(videoDevice < 0 || videoDevice >= m_videoDevices.count())
         videoDevice = 0;
-    if(videoDevice < m_videoDevices.size()){
-        auto core = LinphoneCoreManager::getInstance()->getCore();
-        auto device = Utils::appStringToCoreString(m_videoDevices[videoDevice]);
-        if(device == core->getVideoDevice())
-                return;
-        LinphoneCoreManager::getInstance()->getCore()->setVideoDevice(device);
-    }
+	
+	auto core = LinphoneCoreManager::getInstance()->getCore();
+	auto device = Utils::appStringToCoreString(m_videoDevices[videoDevice]);
+	if(device == core->getVideoDevice())
+		return;
+	core->setVideoDevice(device);
     m_videoDevice = videoDevice;
-    emit videoDeviceChanged(m_videoDevice);
+	emit videoDeviceChanged(m_videoDevice);
+}
+
+void CallCore::setPlaybackDevice(int playbackDevice)
+{
+	if(playbackDevice < 0 || playbackDevice >= m_playbackDevices.count())
+        playbackDevice = 0;
+	
+	auto core = LinphoneCoreManager::getInstance()->getCore();
+	
+	std::string devId = Utils::appStringToCoreString(m_playbackDevices[playbackDevice]);
+	
+	auto list = core->getExtendedAudioDevices();
+	auto audioDevice = find_if(list.cbegin(), list.cend(), [&] ( const std::shared_ptr<linphone::AudioDevice> & audioItem) {
+	   return audioItem->getId() == devId;
+	});
+	
+	if(audioDevice != list.cend()){
+
+		core->setPlaybackDevice(devId);
+		core->setOutputAudioDevice(*audioDevice);
+		m_playbackDevice = playbackDevice;
+		//更换播放器时需要重新加载音量数值
+		reloadPlayerVolume();
+		emit playbackDeviceChanged(m_playbackDevice);
+	}else
+		qWarning() << "Cannot set Playback device. The ID cannot be matched with an existant device : " << m_playbackDevices[playbackDevice];
 }
 
 void CallCore::setPlayerVolume(float playerVolume)

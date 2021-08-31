@@ -33,6 +33,9 @@ public:
     
     Q_PROPERTY(QStringList videoDevices READ getVideoDevices NOTIFY videoDevicesChanged)
     Q_PROPERTY(int videoDevice READ getVideoDevice WRITE setVideoDevice NOTIFY videoDeviceChanged)
+	
+	Q_PROPERTY(QStringList playbackDevices READ getPlaybackDevices NOTIFY playbackDevicesChanged)
+    Q_PROPERTY(int playbackDevice READ getPlaybackDevice WRITE setPlaybackDevice NOTIFY playbackDeviceChanged)
 
 public:
     explicit CallCore(QObject *parent = nullptr);
@@ -51,6 +54,8 @@ public:
     Q_INVOKABLE void callTerminate();
     
     Q_INVOKABLE void reloadCamera();
+	Q_INVOKABLE void reloadSoundDevice();
+	Q_INVOKABLE void reloadPlayerVolume();
 
 
     inline std::shared_ptr<linphone::Call> getCall() const{
@@ -73,6 +78,13 @@ public:
         return m_videoDevice;
     }
     
+	inline QStringList getPlaybackDevices() const{
+		return m_playbackDevices;
+	}
+	
+	inline int getPlaybackDevice() const{
+        return m_playbackDevice;
+    }
 public slots:
     void setCall(std::shared_ptr<linphone::Call> c);
 
@@ -85,6 +97,7 @@ public slots:
     void setMicroMuted(bool microMuted);
     void setPlayerVolume(float playerVolume);
     void setVideoDevice(int videoDevice);
+	void setPlaybackDevice(int playbackDevice);
 
     void dealCallChanged();
 signals:
@@ -92,8 +105,11 @@ signals:
     void callChanged();
     void microMutedChanged(bool microMuted);
     void playerVolumeChanged(float playerVolume);
-    void videoDevicesChanged(QStringList videoDevices);
-    void videoDeviceChanged(int videoDevice);
+    void videoDevicesChanged(QStringList devices);
+    void videoDeviceChanged(int device);
+	
+	void playbackDevicesChanged(QStringList devices);
+    void playbackDeviceChanged(int device);
 private slots:
     void handleCallStateChanged (const std::shared_ptr<linphone::Call> &call, linphone::Call::State state);
 private:
@@ -110,6 +126,8 @@ private:
     float m_playerVolume{0.f};
     QStringList m_videoDevices;
     int m_videoDevice{0};
+	QStringList m_playbackDevices;
+    int m_playbackDevice{0};
 };
 
 #endif // CALLCORE_H

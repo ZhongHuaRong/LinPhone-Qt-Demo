@@ -190,12 +190,16 @@ Window {
 						}
 					}
 				}
+			}
+			
+			RowLayout{
 				
 				Text {
 					text: qsTr("camera")
 				}
 				
 				ComboBox{
+					Layout.fillWidth: true
 					model:core.callcore.videoDevices
 					onCurrentIndexChanged: core.callcore.videoDevice = currentIndex
 					
@@ -203,6 +207,20 @@ Window {
 				}
 			}
 			
+			RowLayout{
+				
+				Text {
+					text: qsTr("playout")
+				}
+				
+				ComboBox{
+					Layout.fillWidth: true
+					model:core.callcore.playbackDevices
+					onCurrentIndexChanged: core.callcore.playbackDevice = currentIndex
+					
+					Component.onCompleted: core.callcore.reloadSoundDevice()
+				}
+			}
 		}
 
         Rectangle{
