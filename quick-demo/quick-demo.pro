@@ -59,7 +59,7 @@ LIBS +=  -L$$PWD/sdk/win32/linphone-sdk/desktop/lib/ -lzlibd \
                                  -lsrtp2 \
 								 -lvpxmd \
                                  -lxml2 \
-                                 -lturbojpeg-static
+                                 -lturbojpeg-static \
          -L$$PWD/sdk/win32/linphone-sdk/desktop/lib/mediastreamer/plugins
 }
 

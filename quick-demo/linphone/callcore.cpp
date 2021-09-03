@@ -182,8 +182,16 @@ void CallCore::terminateCall (const QString& sipAddress) const{
 }
 
 void CallCore::callAccept(){
-    if(currentCall)
-        currentCall->accept();
+    if(!currentCall)
+        return;
+	
+    qApp->processEvents();  // Process GUI events before accepting in order to be synchronized with Call objects and be ready to get SDK events
+    shared_ptr<linphone::Core> core = LinphoneCoreManager::getInstance()->getCore();
+    shared_ptr<linphone::CallParams> params = core->createCallParams(currentCall);
+//    params->enableVideo(false);
+	//端口复用,防止信令接收失败
+	params->enableRtpBundle(true);
+    currentCall->acceptWithParams(params);
 }
 
 void CallCore::callTerminate(){

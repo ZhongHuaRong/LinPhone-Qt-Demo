@@ -32,7 +32,9 @@ LinphoneCoreManager::LinphoneCoreManager(QObject *parent, const QString &configP
     QObject::connect(coreHandlers, &CoreHandlers::coreStarting, this, &LinphoneCoreManager::startIterate, Qt::QueuedConnection);
     QObject::connect(coreHandlers, &CoreHandlers::coreStarted, this, &LinphoneCoreManager::initCoreManager, Qt::QueuedConnection);
     QObject::connect(coreHandlers, &CoreHandlers::coreStopped, this, &LinphoneCoreManager::stopIterate, Qt::QueuedConnection);
-	createLinphoneCore(configPath);
+    QTimer::singleShot(100, [this, configPath](){// Delay the creation in order to have the CoreManager instance set before
+        createLinphoneCore(configPath);
+    });
 }
 
 LinphoneCoreManager::~LinphoneCoreManager()
@@ -47,6 +49,7 @@ void LinphoneCoreManager::initCoreManager()
     accountSettings = new AccountSettings(this);
     callcore = new CallCore(this);
     qInfo() << QStringLiteral("CoreManager initialized");
+	callcore->reloadSoundDevice();
     emit coreManagerInitialized();
 }
 
@@ -89,6 +92,9 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
   factory->setImageResourcesDir(Utils::appStringToCoreString(qApp->applicationDirPath() + "/images"));
   // Migration of configuration and database files from GTK version of Linphone.
 
+  qInfo() << "configPath:" << configPath;
+  //先删除原来配置信息
+//  QFile::remove(configPath);
   mCore = linphone::Factory::get()->createCore(
     Utils::appStringToCoreString(configPath),
     Utils::appStringToCoreString(configPath),
@@ -111,11 +117,34 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
       map["mime"] = Utils::coreStringToAppString(codec->getMimeType());
       map["number"] = codec->getNumber();
       map["recvFmtp"] = Utils::coreStringToAppString(codec->getRecvFmtp());
-      qInfo() << map;
+//      qInfo() << map;
   }
   codecs.push_back(codecs.front());
   codecs.pop_front();
   mCore->setVideoPayloadTypes(codecs);
+  
+//  auto audios = mCore->getAudioPayloadTypes();
+//  for(auto codec:audios){
+//	  QVariantMap map;
+
+//	  codec->enable(true);
+//      map["bitrate"] = codec->getNormalBitrate();
+//      map["channels"] = codec->getChannels();
+//      map["clockRate"] = codec->getClockRate();
+//      map["description"] = Utils::coreStringToAppString(codec->getDescription());
+//      map["enabled"] = codec->enabled();
+//      map["encoderDescription"] = Utils::coreStringToAppString(codec->getEncoderDescription());
+//      map["isUsable"] = codec->isUsable(); // TODO: Notify in UI when unusable.
+//      map["isVbr"] = codec->isVbr();
+//      map["mime"] = Utils::coreStringToAppString(codec->getMimeType());
+//      map["number"] = codec->getNumber();
+//      map["recvFmtp"] = Utils::coreStringToAppString(codec->getRecvFmtp());
+//      qInfo() << map;
+//  }
+//  audios.push_back(codecs.front());
+//  audios.pop_front();
+//  mCore->setAudioPayloadTypes(audios);
+  
   mCore->setVideoDisplayFilter("MSQOGL");
   mCore->usePreviewWindow(true);
 //  mCore->enableVideoPreview(true);
@@ -142,9 +171,9 @@ void LinphoneCoreManager::createLinphoneCore (const QString &configPath) {
 
 void LinphoneCoreManager::reset()
 {
+	callcore->terminateAllCalls();
+	callcore->setCall(nullptr);
     accountSettings->removeProxyConfig();
-    callcore->terminateAllCalls();
-    callcore->setCall(nullptr);
 }
 
 // -----------------------------------------------------------------------------
