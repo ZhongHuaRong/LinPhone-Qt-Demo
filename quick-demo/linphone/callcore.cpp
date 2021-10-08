@@ -271,8 +271,8 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
 
     case linphone::Call::State::End:
     case linphone::Call::State::Error:
-        qInfo() << (int)call->getCallLog()->getStatus();
-        qInfo() << (int)call->getCallLog()->getErrorInfo()->getReason();
+//        qInfo() << (int)call->getCallLog()->getStatus();
+//        qInfo() << (int)call->getCallLog()->getErrorInfo()->getReason();
         qInfo() << QString::fromStdString(call->getCallLog()->getErrorInfo()->getWarnings());
         break;
 
