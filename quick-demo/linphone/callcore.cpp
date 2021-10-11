@@ -18,7 +18,6 @@ static inline CallCore::CallState mapLinphoneCallStateToUi (linphone::Call::Stat
         return CallCore::CallStateEnd;
     case linphone::Call::State::StreamsRunning:
     case linphone::Call::State::Connected:
-    case linphone::Call::State::IncomingReceived:
     case linphone::Call::State::PushIncomingReceived:
     case linphone::Call::State::Updating:
         return CallCore::CallStateRunning;
@@ -37,6 +36,7 @@ static inline CallCore::CallState mapLinphoneCallStateToUi (linphone::Call::Stat
     case linphone::Call::State::OutgoingProgress:
     case linphone::Call::State::OutgoingInit:
     case linphone::Call::State::Resuming:
+	case linphone::Call::State::IncomingReceived:
         return CallCore::CallStateReadying;
     }
 
@@ -288,7 +288,10 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
 
     if(call == currentCall){
         qInfo() << "call state2:" << (int)state;
-        setCallState(mapLinphoneCallStateToUi(state));
+		auto s = mapLinphoneCallStateToUi(state);
+		if(s == CallCore::CallStateRunning)
+			reloadPlayerVolume();
+        setCallState(s);
     }
 }
 
