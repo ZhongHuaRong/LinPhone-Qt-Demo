@@ -14,6 +14,24 @@ Window {
 		return "sip:%2@%1".arg(serverID.text).arg(textField1.text)
 	}
 
+	Timer {
+		id: timer
+	}
+
+	// handle case where delay is required after call begins
+	property bool enableUiVideo: false
+	function setVideoActive() {
+		timer.interval = 35;
+		timer.repeat = false;
+		timer.triggered.connect(function () {
+			enableUiVideo = true;
+		})
+		timer.start();
+
+		return
+	}
+
+
     ColumnLayout {
         id: column
         anchors.fill: parent
@@ -154,6 +172,7 @@ Window {
 				
 				Text{
 					text:{
+						enableUiVideo = false
 						switch(core.callcore.callState){
 						case CallCore.CallStateUnknown:
 							return qsTr("未知状态")
@@ -162,6 +181,7 @@ Window {
 						case CallCore.CallStatePausing:
 							return qsTr("通话暂停")
 						case CallCore.CallStateRunning:
+							setVideoActive()
 							return qsTr("正在通话")
 						case CallCore.CallStateEnd:
 							return qsTr("通话结束")
@@ -254,7 +274,7 @@ Window {
                 width: 500
                 height: 500
                 sourceComponent:camera
-                active:core.callcore.callState == CallCore.CallStateRunning
+                active:enableUiVideo
             }
             Loader{
                 id:loader2
