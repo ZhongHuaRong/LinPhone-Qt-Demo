@@ -10,40 +10,6 @@
 
 using namespace std;
 
-static inline CallCore::CallState mapLinphoneCallStateToUi (linphone::Call::State state) {
-    switch (state) {
-    case linphone::Call::State::End:
-    case linphone::Call::State::Released:
-    case linphone::Call::State::Error:
-        return CallCore::CallStateEnd;
-    case linphone::Call::State::StreamsRunning:
-    case linphone::Call::State::Connected:
-    case linphone::Call::State::PushIncomingReceived:
-    case linphone::Call::State::Updating:
-        return CallCore::CallStateRunning;
-    case linphone::Call::State::PausedByRemote:
-    case linphone::Call::State::Paused:
-    case linphone::Call::State::Pausing:
-        return CallCore::CallStatePausing;
-    case linphone::Call::State::Idle:
-    case linphone::Call::State::EarlyUpdating:
-    case linphone::Call::State::EarlyUpdatedByRemote:
-    case linphone::Call::State::IncomingEarlyMedia:
-    case linphone::Call::State::UpdatedByRemote:
-    case linphone::Call::State::Referred:
-    case linphone::Call::State::OutgoingEarlyMedia:
-    case linphone::Call::State::OutgoingRinging:
-    case linphone::Call::State::OutgoingProgress:
-    case linphone::Call::State::OutgoingInit:
-    case linphone::Call::State::Resuming:
-	case linphone::Call::State::IncomingReceived:
-        return CallCore::CallStateReadying;
-    }
-
-    return CallCore::CallStateUnknown;
-}
-
-
 CallCore::CallCore(QObject *parent) : QObject(parent)
 {
     auto mCoreHandlers = LinphoneCoreManager::getInstance()->getHandlers();
@@ -268,18 +234,26 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
         qInfo() << "OutgoingInit";
         setCall(call);
         break;
-
+	case linphone::Call::State::PausedByRemote:
+        mPausedByRemote = true;
+        break;
     case linphone::Call::State::End:
     case linphone::Call::State::Error:
 //        qInfo() << (int)call->getCallLog()->getStatus();
 //        qInfo() << (int)call->getCallLog()->getErrorInfo()->getReason();
         qInfo() << QString::fromStdString(call->getCallLog()->getErrorInfo()->getWarnings());
+		mPausedByRemote = false;
         break;
-
+	case linphone::Call::State::Connected:
+    case linphone::Call::State::Referred:
+    case linphone::Call::State::Released:
+        mPausedByRemote = false;
+        break;
     case linphone::Call::State::StreamsRunning:
     {
 //        int index = findCallIndex(mList, call);
 //        emit callRunning(index, &call->getData<CallModel>("call-model"));
+		mPausedByRemote = false;
         break;
     }
     default:
@@ -292,7 +266,42 @@ void CallCore::handleCallStateChanged(const std::shared_ptr<linphone::Call> &cal
 		if(s == CallCore::CallStateRunning)
 			reloadPlayerVolume();
         setCallState(s);
+	}
+}
+
+CallCore::CallState CallCore::mapLinphoneCallStateToUi(linphone::Call::State state)
+{
+	switch (state) {
+    case linphone::Call::State::End:
+	case linphone::Call::State::Error:
+    case linphone::Call::State::Released:
+	case linphone::Call::State::Referred:
+        return CallCore::CallStateEnd;
+    case linphone::Call::State::StreamsRunning:
+        return CallCore::CallStateRunning;
+    case linphone::Call::State::PausedByRemote:
+    case linphone::Call::State::Paused:
+    case linphone::Call::State::Pausing:
+	case linphone::Call::State::Resuming:
+        return CallCore::CallStatePausing;
+	case linphone::Call::State::Updating:
+	case linphone::Call::State::UpdatedByRemote:
+		return mPausedByRemote ? CallCore::CallStatePausing : CallCore::CallStateRunning;
+    case linphone::Call::State::Idle:
+    case linphone::Call::State::EarlyUpdating:
+    case linphone::Call::State::EarlyUpdatedByRemote:
+    case linphone::Call::State::IncomingEarlyMedia:
+    case linphone::Call::State::OutgoingEarlyMedia:
+    case linphone::Call::State::OutgoingRinging:
+    case linphone::Call::State::OutgoingProgress:
+    case linphone::Call::State::OutgoingInit:
+	case linphone::Call::State::IncomingReceived:
+	case linphone::Call::State::PushIncomingReceived:
+	case linphone::Call::State::Connected:
+        return CallCore::CallStateReadying;
     }
+
+    return CallCore::CallStateUnknown;
 }
 
 void CallCore::dealCallChanged()

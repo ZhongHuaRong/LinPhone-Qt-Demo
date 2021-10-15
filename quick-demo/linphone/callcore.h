@@ -116,6 +116,8 @@ private:
     inline CallState getCallState() const {
         return m_callstate;
     }
+	
+	CallCore::CallState mapLinphoneCallStateToUi (linphone::Call::State state);
 
     QString generateSavedFilename () const;
     static QString generateSavedFilename (const QString &from, const QString &to);
@@ -128,6 +130,7 @@ private:
     int m_videoDevice{0};
 	QStringList m_playbackDevices;
     int m_playbackDevice{0};
+	bool mPausedByRemote{false};
 };
 
 #endif // CALLCORE_H
