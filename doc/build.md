@@ -233,6 +233,6 @@ export LIB="C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10586.0\um\x86;C:\Pr
 在MacOs下使用llvm+clang编译,可能由于系统版本过老的原因出现了以下编译问题
 
 ### openh264编译的相关错误
-> 编译openh264时出现了#include_next xxx file not found的错误,可能是环境配置的原因
-> 相关编译脚本在desktop目录下,去desktop目录查看EP_openh264_build.sh文件,在终端上面调用这些命令进行编译
-> 编译完成后回到主目录再进行linphone-sdk的编译就可以通过了
+> 编译openh264时出现了#include_next xxx file not found的错误,可能是环境配置的原因  
+> 相关编译脚本在desktop目录下,去desktop目录查看EP_openh264_build.sh文件,在终端上面调用这些命令进行编译  
+> 编译完成后回到主目录再进行linphone-sdk的编译就可以通过了  
